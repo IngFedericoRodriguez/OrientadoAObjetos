@@ -1,0 +1,363 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.Math.*;
+import javax.swing.Timer.*;
+import java.io.*;
+ 
+public class SimonDice extends Frame{
+ 
+	Button boton1, boton2, boton3, boton4, start;
+	Button juego, record;
+	Checkbox caja1, caja2;
+	List lista, lista2;
+	Frame ventana;
+	Label titulo, titulo2;
+	int num=0;
+ 
+	public SimonDice(){
+ 
+		initComponentes();
+	}
+ 
+	public void initComponentes(){
+ 
+		ventana = new Frame();
+		ventana.setLayout(null);
+		ventana.setBounds(10,10,700,500);
+		ventana.setBackground(Color.gray);
+		
+		titulo2 = new Label("INICIANDO JUEGO",Label.CENTER);
+		titulo2.setFont(new Font("Arial",Font.BOLD,30));
+		titulo2.setForeground(Color.yellow);
+		titulo2.setBounds(55,30,600,50);
+ 
+ 
+		ventana.addWindowListener(new java.awt.event.WindowAdapter(){
+			public void windowClosing(java.awt.event.WindowEvent evt){
+				ventana.hide();
+				show();
+			}
+		});
+ 
+ 
+		setLayout (null);
+		setBounds(10,10,600,400);
+		setBackground(Color.LIGHT_GRAY);
+ 
+		titulo = new Label("JUEGO SIMON DICE", Label.CENTER);
+		titulo.setFont(new Font("Arial",Font.BOLD, 30));
+		titulo.setForeground(Color.red);
+		titulo.setBounds(5,30,600,50);
+		add(titulo);
+ 
+		Font f = new Font("Splash",Font.BOLD,12);
+		setFont(f);
+ 
+		caja1 = new Checkbox("Colores Fuertes");
+		caja1.setBounds(50,160,130,40);
+		add(caja1);
+ 
+		caja2 = new Checkbox("Colores Pasteles");
+		caja2.setBounds(50,230,130,40);
+		add(caja2);
+ 
+		caja1.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent evt){
+				colorFuerte(evt);
+			}
+		});
+ 
+		caja2.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent evt){
+				colorPastel(evt);
+			}
+		});
+ 
+		lista = new List();
+		lista.setBounds(200,160,80,70);
+ 
+		lista2 = new List();
+		lista2.setBounds(200,230,80,70);
+ 
+		start = new Button("START");
+		start.setBackground(Color.black);
+		start.setForeground(Color.white);
+		start.setBounds(317,100,80,50);
+ 
+ 
+		start.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				Comenzar(evt);
+			}
+		});
+ 
+		ActionListener al = new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				click(evt);
+			}
+		};
+ 
+ 
+		boton1 = new Button();
+		boton1.setBounds(180,180,180,140);
+ 
+		boton2 = new Button();
+		boton2.setBounds(360,180,180,140);
+ 
+		boton3 = new Button();
+		boton3.setBounds(180,320,180,140);
+ 
+		boton4 = new Button();
+		boton4.setBounds(360,320,180,140);
+ 
+		boton1.addActionListener(al);
+		boton2.addActionListener(al);
+		boton3.addActionListener(al);
+		boton4.addActionListener(al);
+ 
+		juego = new Button("JUGAR");
+		juego.setBackground(Color.red);
+		juego.setForeground(Color.yellow);
+		juego.setBounds(380,150,90,60);
+		juego.setEnabled(false);
+		juego.setVisible(true);
+		add(juego);
+ 
+		juego.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				nuevaVentana(evt);
+			}
+		});
+ 
+ 
+		record = new Button("RECORD");
+		record.setBackground(Color.blue);
+		record.setForeground(Color.yellow);
+		record.setBounds(380,250,90,60);
+		add(record);
+ 
+ 
+		addWindowListener(new java.awt.event.WindowAdapter(){
+			public void windowClosing(java.awt.event.WindowEvent evt){
+				System.exit(0);
+			}
+		});
+ 
+	}//initComponentes
+ 
+	private void colorFuerte(MouseEvent evt){
+		if(!caja1.getState())
+		{
+			caja1.setState(false);
+			caja2.setEnabled(true);
+			lista.setVisible(false);
+		}//if
+		else
+		{
+			caja2.setEnabled(false);
+			caja1.setEnabled(true);
+			lista.removeAll();
+			lista.add("Azul");
+			lista.add("Rojo");
+			lista.add("Amarillo");
+			lista.add("Verde");
+			lista.setForeground(Color.blue);
+			lista.setBackground(Color.yellow);
+			lista.setVisible(true);
+			add(lista);
+			juego.setEnabled(true);
+ 
+			boton1.setBackground(Color.blue);
+			boton2.setBackground(Color.red);
+			boton3.setBackground(Color.yellow);
+			boton4.setBackground(Color.green);
+		}
+	}//colorFuerte
+ 
+ 
+	private void colorPastel(MouseEvent evt){
+		if(!caja2.getState())
+		{
+			caja2.setState(false);
+			caja1.setEnabled(true);
+			lista2.setVisible(false);
+		}//if
+		else
+		{
+			caja1.setEnabled(false);
+			caja2.setEnabled(true);
+			lista2.removeAll();
+			lista2.add("Azulito");
+			lista2.add("Rosita");
+			lista2.add("Anaranjadito");
+			lista2.add("Moradito");
+			lista2.setForeground(Color.magenta);
+			lista2.setBackground(Color.cyan);
+			lista2.setVisible(true);
+			add(lista2);
+			juego.setEnabled(true);
+ 
+ 
+			boton1.setBackground(Color.cyan);
+			boton2.setBackground(Color.pink);
+			boton3.setBackground(Color.orange);
+			boton4.setBackground(Color.magenta);
+		}
+	}//colorPastel
+ 
+ 
+ 
+	public void nuevaVentana(ActionEvent evt){
+ 
+		ventana.add(titulo2);
+		ventana.add(start);
+		ventana.add(boton1);
+		ventana.add(boton2);
+		ventana.add(boton3);
+		ventana.add(boton4);
+		ventana.show();
+ 
+	}
+ 
+ 
+	public void setDelay(int delay){
+ 
+		long t = System.currentTimeMillis() + delay;
+		while(System.currentTimeMillis() < t);
+	}//setDelay
+ 
+ 
+	private void Ejecucion (int nivel, int []vector)
+	{
+ 
+		final double inferior=1;
+		final double superior=5;
+		double r=0;
+ 
+			for(int x=1; x<=nivel; x++)
+			{
+				r = (int) ((superior-inferior)*Math.random()+inferior);
+ 
+				if(r==1)
+					boton1.setBackground(Color.white);
+					setDelay(200);
+					if(caja1.getState())
+						boton1.setBackground(Color.blue);
+					if(caja2.getState())
+						boton1.setBackground(Color.cyan);
+ 
+				if(r==2)
+					boton2.setBackground(Color.white);
+					setDelay(200);
+					if(caja1.getState())
+						boton2.setBackground(Color.red);
+					if(caja2.getState())
+						boton2.setBackground(Color.pink);
+ 
+				if(r==3)
+					boton3.setBackground(Color.white);
+					setDelay(200);
+					if(caja1.getState())
+						boton3.setBackground(Color.yellow);
+					if(caja2.getState())
+						boton3.setBackground(Color.orange);
+ 
+				if(r==4)
+					boton4.setBackground(Color.white);
+					setDelay(200);
+					if(caja1.getState())
+						boton4.setBackground(Color.green);
+					if(caja2.getState())
+						boton4.setBackground(Color.magenta);
+ 
+				vector[x] = (int) r;
+ 
+			}//for
+			setDelay(600);
+ 
+	}//Ejecucion
+ 
+	public void click(ActionEvent evt){
+ 
+		Object obj = evt.getSource();
+ 
+		if(obj==boton1) num=1;
+		if(obj==boton2) num=2;
+		if(obj==boton3) num=3;
+		if(obj==boton4) num=4;
+	}
+ 
+	public int Eleccion(){
+		int op;
+		return op=num;
+	}
+ 
+ 
+	private boolean Jugar(int nivel, int []vector){
+ 
+		boolean ban=true;
+		int opcion=0;
+ 
+		JOptionPane.showMessageDialog(null,"NIVEL: "+ nivel);
+ 
+		Ejecucion(nivel,vector);
+ 
+		JOptionPane.showMessageDialog(null,"ES TU TURNO");
+ 
+ 
+ 
+		for(int y=1; y<=nivel; y++)
+		{
+ 
+			opcion=Eleccion();
+			setDelay(500);
+ 
+			if(opcion!=vector[y])
+			{
+				ban=false;
+				y=nivel;
+			}//if
+		}//for
+ 
+		return ban;
+ 
+	}//Jugar
+ 
+ 
+ 
+	private void Comenzar(ActionEvent evt){
+ 
+		int [] vector = new int[21];
+		int nivel=1;
+ 
+		for(int z=1; z<=20; z++)
+			vector[z]=0;
+ 
+		boolean b=true;
+ 
+ 
+		setDelay(600);
+ 
+		do{
+ 
+			b=Jugar(nivel,vector);
+			nivel++;
+ 
+		}while(b);
+ 
+ 
+		if(b)
+			JOptionPane.showMessageDialog(null,"GANASTE");
+		else
+			JOptionPane.showMessageDialog(null,"PERDISTE");
+ 
+ 
+	}//Comenzar
+ 
+ 
+	public static void main(String[] args){
+		new SimonDice().show();
+	}//main
+ 
+}//clase SimonDice
