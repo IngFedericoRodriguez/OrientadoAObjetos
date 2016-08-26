@@ -1,10 +1,13 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/// Simulacion para el modelo vista.-
+
 public class GuiTemporalConsola {
 	
 	public GuiTemporalConsola() {
-		// TODO Auto-generated constructor stub
+	@SuppressWarnings("unused")
+	mainJuego jueguito = new mainJuego();
 	}
 	public static void main(String[] args) {
 		mostrarMenu();
