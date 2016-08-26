@@ -4,14 +4,17 @@ import java.io.*;
 
 public class GuiTemporalConsola {
 	@SuppressWarnings("unused")
+	
 	private mainJuego game;
+	
 	public GuiTemporalConsola(){
 		game = new mainJuego();
 	}
 	public static void main(String[] args) {
-		mostrarMenu();
+		GuiTemporalConsola main = new GuiTemporalConsola();
+		main.mostrarMenu();
 	}
-	public static  void mostrarMenu() {
+	public  void mostrarMenu() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("MENU DE OPCIONES temporal.-");
 		System.out.println("-------------------------------------------------------");
@@ -53,7 +56,7 @@ public class GuiTemporalConsola {
 		} catch (Exception e) {
 		}
 	}
-	public static void crear() {
+	public void crear() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println(" --- Agregar Usuario ---");
@@ -61,9 +64,9 @@ public class GuiTemporalConsola {
 			String nombre = reader.readLine();
 			System.out.print("Ingrese email");
 			String email = reader.readLine();
-			
+			System.out.println(" -----------------------");
 			// creo usuario
-		   
+			game.crearUsuario(nombre, email);
 			mostrarMenu();
 		} catch (Exception e) {
 		}
