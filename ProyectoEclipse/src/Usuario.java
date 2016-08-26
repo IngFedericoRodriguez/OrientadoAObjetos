@@ -1,12 +1,14 @@
 
 public class Usuario  {
 
-	public String nombre;
-	public String email;
-	public float score;
-	
-	public Usuario(String nombre2, String email2) {
-		// TODO Auto-generated constructor stub
+	private String nombre;
+	private String email;
+	private float score;
+	// constructor
+	public Usuario(String nombre, String email) {
+		super();
+		this.nombre = nombre;
+		this.email = email;
 	}
 	public String getNombre() {
 		return nombre;

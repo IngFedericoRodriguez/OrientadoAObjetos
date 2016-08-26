@@ -1,10 +1,12 @@
+
 import java.util.*;
 import java.io.*;
+
 /// Simulacion para el modelo vista.-
 
+@SuppressWarnings("unused")
 public class GuiTemporalConsola {
-	@SuppressWarnings("unused")
-	
+
 	private mainJuego game;
 	
 	public GuiTemporalConsola(){
@@ -42,7 +44,7 @@ public class GuiTemporalConsola {
 				break;
 			}
 			case '4': {
-				//		this.abrirCuenta();
+				verUsuarios();
 				break;
 			}
 			case '5': {
@@ -56,6 +58,11 @@ public class GuiTemporalConsola {
 		} catch (Exception e) {
 		}
 	}
+	private void verUsuarios() {
+		
+			game.listarUsuarios();
+			mostrarMenu();
+	}
 	public void crear() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -67,8 +74,9 @@ public class GuiTemporalConsola {
 			System.out.println(" -----------------------");
 			// creo usuario
 			game.crearUsuario(nombre, email);
-			mostrarMenu();
+			this.mostrarMenu();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 	}
