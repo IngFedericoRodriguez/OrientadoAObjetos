@@ -1,13 +1,17 @@
+import java.util.Vector;
 
 public class mainJuego {
+	
+	public Vector<Usuario> usuarios;
+	public Vector<Juego> juegos;
 
 	public mainJuego() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Bienvenidos al proyecto del juego");
 	}
-
+	public void crearUsuarios(String nombre, String email){
+		
+	}
 }
