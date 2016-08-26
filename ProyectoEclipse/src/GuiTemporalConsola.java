@@ -1,18 +1,17 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
+import java.util.*;
+import java.io.*;
 /// Simulacion para el modelo vista.-
 
 public class GuiTemporalConsola {
-	
-	public GuiTemporalConsola() {
 	@SuppressWarnings("unused")
-	mainJuego jueguito = new mainJuego();
+	private mainJuego game;
+	public GuiTemporalConsola(){
+		game = new mainJuego();
 	}
 	public static void main(String[] args) {
 		mostrarMenu();
 	}
-	public static void mostrarMenu() {
+	public static  void mostrarMenu() {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("MENU DE OPCIONES temporal.-");
 		System.out.println("-------------------------------------------------------");
@@ -28,7 +27,7 @@ public class GuiTemporalConsola {
 			char s = (char) reader.read();
 			switch (s) {
 			case '1': {
-		//		this.listarClientes();
+				crear();
 				break;
 			}
 			case '2': {
@@ -53,5 +52,21 @@ public class GuiTemporalConsola {
 			}
 		} catch (Exception e) {
 		}
+	}
+	public static void crear() {
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println(" --- Agregar Usuario ---");
+			System.out.print("Ingrese nombre:");
+			String nombre = reader.readLine();
+			System.out.print("Ingrese email");
+			String email = reader.readLine();
+			
+			// creo usuario
+		   
+			mostrarMenu();
+		} catch (Exception e) {
+		}
+		
 	}
 }
