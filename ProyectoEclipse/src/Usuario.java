@@ -4,9 +4,8 @@ public class Usuario  {
 	private String nombre;
 	private String email;
 	private float score;
-	// constructor
+
 	public Usuario(String nombre, String email) {
-		super();
 		this.nombre = nombre;
 		this.email = email;
 	}
