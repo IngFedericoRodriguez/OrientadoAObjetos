@@ -3,7 +3,7 @@ public class Usuario  {
 
 	private String nombre;
 	private String email;
-	private float score;
+	private int score;
 
 	public Usuario(String nombre, String email) {
 		this.nombre = nombre;
@@ -26,11 +26,11 @@ public class Usuario  {
 		this.email = email;
 	}
 	
-	public float getScore() {
+	public int getScore() {
 		return score;
 	}
 	
-	public void setScore(float score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 	
