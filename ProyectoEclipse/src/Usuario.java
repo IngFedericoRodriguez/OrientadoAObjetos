@@ -39,6 +39,10 @@ public class Usuario  {
 	}
 	
 	// Metodos de Negocio
+	// FIXME: Propuesta disenio:
+	// Para que el score este aca, el usuario tiene que conocer a todos los juegos. Esto genera dependencia.
+	// Para mi lo mejor es pasar el user al controlador del juego y que el score lo tenga el. 
+	
 	public void sumarScore(float puntos){
 		this.score = puntos + this.score;
 	}
