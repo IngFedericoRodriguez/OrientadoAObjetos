@@ -1,5 +1,5 @@
 
-public class VistaCrearUsuario extends VistaJuego {
+public class VistaCrearUsuario  {
 
 	public VistaCrearUsuario() {
 		
