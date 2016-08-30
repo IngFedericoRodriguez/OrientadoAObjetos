@@ -1,3 +1,4 @@
+package Vista;
 
 import java.util.*;
 import java.awt.event.ActionEvent;
@@ -5,6 +6,9 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 import javax.swing.*;
+
+import Controlador.mainJuego;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Label;
@@ -61,6 +65,7 @@ public class VistaJuego {
 		btnlistarUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Vamos a listar usuarios!!!");
+				VistaListarUsuarios viewTableUser = new VistaListarUsuarios();
 			}
 		});
 		btnlistarUsuarios.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -1,3 +1,4 @@
+package Modelo;
 
 public abstract class Juego {
 	public Juego() {

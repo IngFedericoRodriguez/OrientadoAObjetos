@@ -1,4 +1,8 @@
+package Controlador;
 import java.util.Vector;
+
+import Modelo.Juego;
+import Modelo.Usuario;
 
 // Main modelo controlador.-
 
