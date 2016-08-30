@@ -7,7 +7,7 @@ import java.io.*;
 
 import javax.swing.*;
 
-import Controlador.mainJuego;
+import Modelo.mainJuego;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
