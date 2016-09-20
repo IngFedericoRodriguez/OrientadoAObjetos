@@ -1,11 +1,11 @@
 package CartasIguales;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
 public class VistaCarta extends JButton {
+
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String img;
 	private String nombre;
