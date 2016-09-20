@@ -1,28 +1,41 @@
 package CartasIguales;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
-public class VistaCarta extends JButton{
+public class VistaCarta extends JButton {
 	private int id;
 	private String img;
 	private String nombre;
 	private boolean locked;
 	private boolean flipped;
-	private static final int width = 77;
-	private static final int height = 28;
+	private static final int width = 100;
+	private static final int height = 100;
 	
 	public VistaCarta(int id, String nombre) {
 		this.id = id;
 		this.nombre = nombre;
 		locked = false;
 		flipped = false;
+		
 	}
+	
+	public boolean isFlipped(){
+		return flipped;
+	}
+	
 	
 	public void flip() {
 		if(!locked) {
-			setText(nombre);
-		} else {
-			setText("");
+			if(!flipped) {
+				setText(nombre);
+				flipped = true;
+			} else {
+				setText("_____ ");
+				flipped = false;
+			}
 		}
 	}
 	
@@ -44,6 +57,7 @@ public class VistaCarta extends JButton{
 		int posy = 34 + height*row;
 		this.setBounds(posx, posy, width, height);
 		this.setVisible(true);
+		setText("_____ ");
 	}
 
 }
