@@ -5,18 +5,36 @@ import java.util.ArrayList;
 // MODELO
 public class Juego {
 	private int level;
+	private int intentos;
+	private int adivinadas;
 	private ArrayList<Carta> cartas;
 	private ArrayList<Carta> cartasDelNivel;
 	
 	//Sobrecarga
 	public Juego(int level) {
 		this.level = level;
+		reset();
 	}
 	
 	public Juego() {
 		level = 1;
+		reset();
+	}
+	
+	public void nuevoLevel() {
+		level++;
+		reset();
+	}
+	
+	public void reset() {
+		intentos = 0;
+		adivinadas = 0;
 		cartas = new ArrayList<Carta>();
 		cartasDelNivel = new ArrayList<Carta>();
+	}
+	
+	public void sumarIntento() {
+		intentos++;
 	}
 	
 	public void init() {
@@ -45,7 +63,17 @@ public class Juego {
 	}
 	
 	public boolean match(int selected1, int selected2) {
-		return selected1 == selected2;
+		boolean match = selected1 == selected2;
+		if(match) {
+			adivinadas++;
+		} else {
+			intentos++;
+		}
+		return match;
+	}
+	
+	public boolean nivelGanado() {
+		return adivinadas == level*2;
 	}
 	
 	private void crearCartas(){
@@ -64,6 +92,14 @@ public class Juego {
 			cartasDelNivel.add(cartas.get(i));
 			cartasDelNivel.add(cartas.get(i));
 		}
+	}
+	
+	public int getIntentos() {
+		return intentos;
+	}
+	
+	public int getAdivinadas() {
+		return adivinadas;
 	}
 
 }
