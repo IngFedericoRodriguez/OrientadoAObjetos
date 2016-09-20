@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,14 +16,22 @@ import javax.swing.WindowConstants;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-// TODO Hay que crear una clase "Board" que sea la que implemente el action listener. 
+// TODO Crear "Tablero" que implemente el ActionListener y Runneable
+// Mover toda la logica de creacion de botones al tablero.
+// Mover los marcadores al tablero.
+// Volver a hacer que esta clase extienda a Jframe? No se, hay que ver cuando lo unamos con el resto del programa.
+// Si esto puede ser un JPanel, esto se convierte en el tablero, para MVC es medio raro, el modelo interactua con las vistas directamente?.
 // 
+
+
 public class MainJuego extends JPanel implements ActionListener, Runnable {
  
 	private Juego juego;
 	private VistaCarta carta1;
 	private VistaCarta carta2;
 	private int state;
+	private Marcador intentos;
+	private Marcador aciertos;
 	
 	public static void main(String[] args) {
 		MainJuego inst = new MainJuego();
@@ -48,6 +57,18 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 		frame.setVisible(true);
 		frame.setSize(800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crearVistaDeCartas();
+		crearMarcadores();
+	}
+	
+	private void crearMarcadores() {
+		intentos = new Marcador("Intentos:", JLabel.TOP, JLabel.CENTER);
+		aciertos = new Marcador("Aciertos", JLabel.BOTTOM, JLabel.CENTER);
+		add(intentos);
+		add(aciertos);
+	}
+	
+	private void crearVistaDeCartas() {
 		ArrayList<Carta> cartas = juego.getCartas();
 		ArrayList<VistaCarta> vistaCartas = new ArrayList<VistaCarta>();
 		for(Carta carta : cartas) {
@@ -68,7 +89,6 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 			add(vista);
 			cell++;
 		}
-
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -103,11 +123,23 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 				}
 			}
 			state = 0;
+			updateSocre();
+			if (juego.nivelGanado()) {
+				juegoGanado();
+			}
+				
 		}
+	}
+	
+	private void updateSocre() {
+		intentos.updateScore(Integer.toString(juego.getIntentos()));
+		aciertos.updateScore(Integer.toString(juego.getAdivinadas()));
+	}
+	
+	private void juegoGanado() {
+		Marcador pepe = new Marcador("JUEGO GANADO!!!!!", JLabel.BOTTOM, JLabel.LEFT);
+		add(pepe);
 		
 	}
 
-
-	
-	
 }
