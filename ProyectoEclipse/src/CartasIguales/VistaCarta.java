@@ -19,7 +19,6 @@ public class VistaCarta extends JButton {
 		this.nombre = nombre;
 		locked = false;
 		flipped = false;
-		
 	}
 	
 	public boolean isFlipped(){
