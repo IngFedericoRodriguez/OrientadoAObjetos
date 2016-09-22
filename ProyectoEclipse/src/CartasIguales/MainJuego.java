@@ -36,8 +36,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	private VistaCarta carta1;
 	private VistaCarta carta2;
 	private int state;
-	private Marcador intentos;
-	private Marcador aciertos;
+	private Marcador marcador;
 	private Tablero tablero;
 	
 	public static void main(String[] args) {
@@ -55,6 +54,18 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		state = 0;
 	}
 	
+	public void run() {
+		setBaseLayout();
+		crearTablero(juego.getCuentaCartas());
+		llenarTablero();
+		tablero.setVisible(true);
+		crearMarcador();
+		marcador.setVisible(true);
+		this.setVisible(true);
+		pack();
+
+	}
+		
 	private void setBaseLayout(){
 		GridLayout layout = new GridLayout(2,0);
 		layout.setHgap(15);
@@ -80,22 +91,11 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		this.state = 0;
 	}
 	
-	public void run() {
-		setBaseLayout();
-		crearTablero(juego.getCuentaCartas());
-		llenarTablero();
-		tablero.setVisible(true);
-		crearMarcadores();
-		this.setVisible(true);
 
-	}
 	
-	
-	private void crearMarcadores() {
-		intentos = new Marcador("Intentos:", JLabel.TOP, JLabel.CENTER);
-		aciertos = new Marcador("Aciertos", JLabel.BOTTOM, JLabel.CENTER);
-		add(intentos);
-		add(aciertos);
+	private void crearMarcador() {
+		marcador = new Marcador();
+		this.getContentPane().add(marcador, BorderLayout.SOUTH);
 	}
 	
 	private void llenarTablero() {
@@ -143,7 +143,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 				carta2.flip();
 			}
 			state = 0;
-			//updateSocre();
+			updateSocre();
 			if (juego.nivelGanado()) {
 				juegoGanado();
 			}
@@ -152,13 +152,12 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	private void updateSocre() {
-		intentos.updateScore(Integer.toString(juego.getIntentos()));
-		aciertos.updateScore(Integer.toString(juego.getAdivinadas()));
+		marcador.updateAdivinadas(Integer.toString(juego.getAdivinadas()));
+		marcador.updateIntentos(Integer.toString(juego.getIntentos()));
 	}
 	
 	private void juegoGanado() {
-		Marcador pepe = new Marcador("JUEGO GANADO!!!!!", JLabel.BOTTOM, JLabel.RIGHT);
-		add(pepe);
+
 	}
 
 }
