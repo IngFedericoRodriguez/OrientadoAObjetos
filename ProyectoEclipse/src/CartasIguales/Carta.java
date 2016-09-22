@@ -2,20 +2,15 @@ package CartasIguales;
 
 public class Carta {
 	private int id;
-	private String img;
-	private String nombre;
+	private String imgSource;
 	
-	public Carta(int id, String nombre) {
+	public Carta(int id, String imgSource) {
 		this.id = id;
-		this.nombre = nombre;
+		this.imgSource = imgSource;
 	}
 	
-	public String getImagen() {
-		return img;
-	}
-	
-	public String getName() {
-		return nombre;
+	public String imgSource() {
+		return imgSource;
 	}
 	
 	public int getId() {

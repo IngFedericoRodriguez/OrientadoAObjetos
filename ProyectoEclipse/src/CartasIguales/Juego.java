@@ -83,10 +83,10 @@ public class Juego {
 	
 	private void crearCartas(){
 		//TODO: Buscar forma de generar Random.
-		Carta carta = new Carta(1, "carta1");
+		Carta carta = new Carta(1, "/imagenes/pikachu.png");
 		carta.getId();
 		cartas.add(carta);
-		Carta carta2 = new Carta(2, "carta2");
+		Carta carta2 = new Carta(2, "/imagenes/abra.png");
 		cartas.add(carta2);
 	}
 	

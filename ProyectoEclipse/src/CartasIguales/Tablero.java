@@ -15,10 +15,12 @@ public class Tablero extends JPanel {
 	private int columnas;
 	private GridLayout layout;
 	
+	
 	public Tablero(int filas, int columnas) {
 		this.filas = filas;
 		this.columnas = columnas;
-		setPreferredSize(new Dimension(800, 600));
+		// hardcoded dimension. Hay que meter un config file o algo asi.
+		setPreferredSize(new Dimension(filas * 200, columnas * 200));
 		crearLayout();
 		setearGaps();
 	}

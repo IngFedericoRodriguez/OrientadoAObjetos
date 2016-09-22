@@ -1,6 +1,14 @@
 package CartasIguales;
 
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class VistaCarta extends JButton {
@@ -8,17 +16,23 @@ public class VistaCarta extends JButton {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String img;
-	private String nombre;
+	private String frente;
 	private boolean locked;
 	private boolean flipped;
-	private static final int width = 120;
-	private static final int height = 30;
+	private static final int width = 200;
+	private static final int height = 200;
+	private static final String tapa = "/imagenes/pokeball.jpg";
 	
-	public VistaCarta(int id, String nombre) {
+	public VistaCarta(int id, String frente) {
 		this.id = id;
-		this.nombre = nombre;
+		this.frente = frente;
 		locked = false;
 		flipped = false;
+		setImagen(tapa);
+		setPreferredSize(new Dimension(200, 200));
+		setBorder(BorderFactory.createEmptyBorder());
+		setContentAreaFilled(false);
+		setBorder(null);
 	}
 	
 	public boolean isFlipped(){
@@ -29,10 +43,10 @@ public class VistaCarta extends JButton {
 	public void flip() {
 		if(!locked) {
 			if(!flipped) {
-				setText(nombre);
+				setImagen(frente);
 				flipped = true;
 			} else {
-				setText("_____ ");
+				setImagen(tapa);
 				flipped = false;
 			}
 		}
@@ -49,10 +63,13 @@ public class VistaCarta extends JButton {
 	public int getId() {
 		return id;
 	}
-	
-	public void render() {
-		// TODO : Change 34 for Final "spacing";
-		setText("_____");
+		
+	private void setImagen(String imgSource) {
+	  try {
+		    Image img = ImageIO.read(getClass().getResource(imgSource));
+		    setIcon(new ImageIcon(img));
+		  } catch (IOException ex) {
+		  }
 	}
 
 }

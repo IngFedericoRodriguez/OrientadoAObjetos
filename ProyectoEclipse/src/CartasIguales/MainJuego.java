@@ -60,7 +60,6 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		layout.setHgap(15);
 		layout.setVgap(10);
 		setLayout(layout);
-		
 	}
 	
 	private void crearTablero(int total) {
@@ -82,6 +81,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	public void run() {
+		setBaseLayout();
 		crearTablero(juego.getCuentaCartas());
 		llenarTablero();
 		tablero.setVisible(true);
@@ -102,12 +102,11 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		ArrayList<Carta> cartas = juego.getCartas();
 		ArrayList<VistaCarta> vistaCartas = new ArrayList<VistaCarta>();
 		for(Carta carta : cartas) {
-			vistaCartas.add(new VistaCarta(carta.getId(), carta.getName()));
+			vistaCartas.add(new VistaCarta(carta.getId(), carta.imgSource()));
 		}
 		Collections.shuffle(vistaCartas);
 		for(VistaCarta vista : vistaCartas) {
 			vista.addActionListener(this);
-			vista.render();
 		}
 		tablero.agregarCartas(vistaCartas);
 	}
