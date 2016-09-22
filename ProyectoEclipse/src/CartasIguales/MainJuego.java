@@ -24,26 +24,45 @@ import javax.swing.event.MenuListener;
 // 
 
 
-public class MainJuego extends JPanel implements ActionListener, Runnable {
+public class MainJuego extends JFrame implements ActionListener, Runnable {
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Juego juego;
 	private VistaCarta carta1;
 	private VistaCarta carta2;
 	private int state;
 	private Marcador intentos;
 	private Marcador aciertos;
+	private Tablero tablero;
 	
 	public static void main(String[] args) {
 		MainJuego inst = new MainJuego();
-
+		inst.run();
 	}
 	
 	public MainJuego() {
-		super();
+		super("PokeMemoria");
 		juego = new Juego();
 		juego.init();
-		run();
+		crearTablero(juego.getCuentaCartas());
 		state = 0;
+	}
+	
+	private void crearTablero(int total) {
+		int i = 2;
+		boolean encontrado = false;
+		while (i <= 9 && !encontrado) {
+			// tengo que encontrar una matris de NxN
+			if(total%i == 0) {
+				tablero = new Tablero(i, i);
+				encontrado = true;
+				add(tablero);
+			}
+			i++;
+		}
 	}
 	
 	public void resetState() {
@@ -51,15 +70,15 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 	}
 	
 	public void run() {
-		JFrame frame = new JFrame("Memory");
-		frame.add(this);
-		frame.setResizable(false);
-		frame.setVisible(true);
-		frame.setSize(800, 800);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		crearVistaDeCartas();
-		crearMarcadores();
+		this.setResizable(true);
+		this.setSize(800, 800);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		crearVistaDeJuego();
+		//crearMarcadores();
+		this.setVisible(true);
+
 	}
+	
 	
 	private void crearMarcadores() {
 		intentos = new Marcador("Intentos:", JLabel.TOP, JLabel.CENTER);
@@ -68,27 +87,20 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 		add(aciertos);
 	}
 	
-	private void crearVistaDeCartas() {
+	private void crearVistaDeJuego() {
 		ArrayList<Carta> cartas = juego.getCartas();
 		ArrayList<VistaCarta> vistaCartas = new ArrayList<VistaCarta>();
 		for(Carta carta : cartas) {
 			vistaCartas.add(new VistaCarta(carta.getId(), carta.getName()));
 		}
 		Collections.shuffle(vistaCartas);
-		int row = 1;
-		int cell = 1;
 		for(VistaCarta vista : vistaCartas) {
-			// on new row
-			if(cell%5 == 0) {
-				row++;
-				cell = 1;
-			}
-			vista.render(row, cell);
 			vista.addActionListener(this);
 			vista.setVisible(true);
-			add(vista);
-			cell++;
 		}
+		tablero.agregarCartas(vistaCartas);
+		tablero.setVisible(true);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -115,15 +127,15 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 			} else {
 				try {
 					Thread.sleep(500);
-					carta1.flip();
-					carta2.flip();
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				carta1.flip();
+				carta2.flip();
 			}
 			state = 0;
-			updateSocre();
+			//updateSocre();
 			if (juego.nivelGanado()) {
 				juegoGanado();
 			}
@@ -137,9 +149,8 @@ public class MainJuego extends JPanel implements ActionListener, Runnable {
 	}
 	
 	private void juegoGanado() {
-		Marcador pepe = new Marcador("JUEGO GANADO!!!!!", JLabel.BOTTOM, JLabel.LEFT);
+		Marcador pepe = new Marcador("JUEGO GANADO!!!!!", JLabel.BOTTOM, JLabel.RIGHT);
 		add(pepe);
-		
 	}
 
 }

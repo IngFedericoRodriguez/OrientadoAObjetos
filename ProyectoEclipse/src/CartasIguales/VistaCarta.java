@@ -11,8 +11,8 @@ public class VistaCarta extends JButton {
 	private String nombre;
 	private boolean locked;
 	private boolean flipped;
-	private static final int width = 100;
-	private static final int height = 100;
+	private static final int width = 120;
+	private static final int height = 30;
 	
 	public VistaCarta(int id, String nombre) {
 		this.id = id;

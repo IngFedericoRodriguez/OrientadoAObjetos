@@ -47,9 +47,14 @@ public class Juego {
 		repartir(level);
 	}
 	
-	public ArrayList<Carta> getCartas(){
+	public ArrayList<Carta> getCartas() {
 		return cartasDelNivel;
 	}
+	
+	public int getCuentaCartas() {
+		return cartasDelNivel.size();
+	}
+	
 	private void repartir(int level) {
 		int cantidadPares = level+1;
 	}
