@@ -1,5 +1,7 @@
 package CartasIguales;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -45,10 +47,20 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	
 	public MainJuego() {
 		super("PokeMemoria");
+		this.setResizable(true);
+		this.setSize(800, 800);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		juego = new Juego();
 		juego.init();
-		crearTablero(juego.getCuentaCartas());
 		state = 0;
+	}
+	
+	private void setBaseLayout(){
+		GridLayout layout = new GridLayout(2,0);
+		layout.setHgap(15);
+		layout.setVgap(10);
+		setLayout(layout);
+		
 	}
 	
 	private void crearTablero(int total) {
@@ -59,7 +71,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 			if(total%i == 0) {
 				tablero = new Tablero(i, i);
 				encontrado = true;
-				add(tablero);
+				this.getContentPane().add(tablero, BorderLayout.NORTH);
 			}
 			i++;
 		}
@@ -70,11 +82,10 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	public void run() {
-		this.setResizable(true);
-		this.setSize(800, 800);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		crearVistaDeJuego();
-		//crearMarcadores();
+		crearTablero(juego.getCuentaCartas());
+		llenarTablero();
+		tablero.setVisible(true);
+		crearMarcadores();
 		this.setVisible(true);
 
 	}
@@ -87,7 +98,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		add(aciertos);
 	}
 	
-	private void crearVistaDeJuego() {
+	private void llenarTablero() {
 		ArrayList<Carta> cartas = juego.getCartas();
 		ArrayList<VistaCarta> vistaCartas = new ArrayList<VistaCarta>();
 		for(Carta carta : cartas) {
@@ -96,11 +107,9 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		Collections.shuffle(vistaCartas);
 		for(VistaCarta vista : vistaCartas) {
 			vista.addActionListener(this);
-			vista.setVisible(true);
+			vista.render();
 		}
 		tablero.agregarCartas(vistaCartas);
-		tablero.setVisible(true);
-		
 	}
 
 	public void actionPerformed(ActionEvent e) {

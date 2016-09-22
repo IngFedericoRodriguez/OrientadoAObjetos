@@ -50,13 +50,9 @@ public class VistaCarta extends JButton {
 		return id;
 	}
 	
-	public void render(int row, int cell) {
+	public void render() {
 		// TODO : Change 34 for Final "spacing";
-		int posx = 34 + width*cell;
-		int posy = 34 + height*row;
-		this.setBounds(posx, posy, width, height);
-		this.setVisible(true);
-		setText("_____ ");
+		setText("_____");
 	}
 
 }

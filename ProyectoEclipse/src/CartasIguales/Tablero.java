@@ -1,5 +1,6 @@
 package CartasIguales;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -17,7 +18,14 @@ public class Tablero extends JPanel {
 	public Tablero(int filas, int columnas) {
 		this.filas = filas;
 		this.columnas = columnas;
+		setPreferredSize(new Dimension(800, 600));
 		crearLayout();
+		setearGaps();
+	}
+	
+	private void setearGaps() {
+		layout.setHgap(10);
+		layout.setVgap(10);
 	}
 	
 	private void crearLayout() {
