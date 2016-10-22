@@ -152,6 +152,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	private void newLevel() {
+		juego.nuevoLevel();
 		juego.reset();
 		juego.init();
 		this.getContentPane().removeAll();
