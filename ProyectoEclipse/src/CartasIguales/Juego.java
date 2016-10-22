@@ -81,7 +81,7 @@ public class Juego {
 	}
 	
 	public boolean nivelGanado() {
-		return adivinadas == level*2;
+		return adivinadas == level+1;
 	}
 	
 	private void crearCartas(){
@@ -104,7 +104,7 @@ public class Juego {
 	}
 	
 	private void crearCartasParaNivel() {
-		int cartasDiferentes = level*2;
+		int cartasDiferentes = level+1;
 		for (int i = 0; i < cartasDiferentes; i++ ) {
 			// tengo que crear la dupla de cartas.
 			cartasDelNivel.add(cartas.get(i));
