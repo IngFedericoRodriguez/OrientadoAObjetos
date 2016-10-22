@@ -78,7 +78,7 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		boolean encontrado = false;
 		while (i <= 9 && !encontrado) {
 			// tengo que encontrar una matris de NxN
-			if(total%i == 0) {
+			if(total/2%i == 0) {
 				tablero = new Tablero(i, i);
 				encontrado = true;
 				this.getContentPane().add(tablero, BorderLayout.NORTH);
