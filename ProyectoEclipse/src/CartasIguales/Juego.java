@@ -14,11 +14,13 @@ public class Juego {
 	//Sobrecarga
 	public Juego(int level) {
 		this.level = level;
+		cartas = new ArrayList<Carta>();
 		reset();
 	}
 	
 	public Juego() {
 		level = 1;
+		cartas = new ArrayList<Carta>();
 		reset();
 	}
 	
@@ -30,7 +32,6 @@ public class Juego {
 	public void reset() {
 		intentos = 0;
 		adivinadas = 0;
-		cartas = new ArrayList<Carta>();
 		cartasDelNivel = new ArrayList<Carta>();
 	}
 	
