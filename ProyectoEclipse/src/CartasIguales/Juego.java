@@ -1,6 +1,7 @@
 package CartasIguales;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 // MODELO
 public class Juego {
@@ -39,6 +40,7 @@ public class Juego {
 	
 	public void init() {
 		crearCartas();
+		mezclarCartas();
 		crearCartasParaNivel();
 	}
 	
@@ -83,20 +85,34 @@ public class Juego {
 	
 	private void crearCartas(){
 		//TODO: Buscar forma de generar Random.
-		Carta carta = new Carta(1, "/imagenes/pikachu.png");
-		carta.getId();
-		cartas.add(carta);
-		Carta carta2 = new Carta(2, "/imagenes/abra.png");
-		cartas.add(carta2);
+		cartas.add(new Carta(1, "/imagenes/pikachu.png"));
+		cartas.add(new Carta(2, "/imagenes/abra.png"));
+		cartas.add(new Carta(3, "/imagenes/bellsprout.png"));
+		cartas.add(new Carta(4, "/imagenes/bulbasaur.png"));
+		cartas.add(new Carta(5, "/imagenes/charmander.png"));
+		cartas.add(new Carta(6, "/imagenes/ditto.png"));
+		cartas.add(new Carta(7, "/imagenes/dratini.png"));
+		cartas.add(new Carta(8, "/imagenes/eevee.png"));
+		cartas.add(new Carta(9, "/imagenes/horsea.png"));
+		cartas.add(new Carta(10, "/imagenes/Jigglypuff.png"));
+		cartas.add(new Carta(11, "/imagenes/ponyta.png"));
+		cartas.add(new Carta(12, "/imagenes/psyduck.png"));
+		cartas.add(new Carta(13, "/imagenes/snorlax.png"));
+		cartas.add(new Carta(14, "/imagenes/squirtle.png"));
+		cartas.add(new Carta(15, "/imagenes/togepi.png"));
 	}
 	
 	private void crearCartasParaNivel() {
 		int cartasDiferentes = level*2;
-		for(int i=0; i < cartasDiferentes; i++ ) {
+		for (int i = 0; i < cartasDiferentes; i++ ) {
 			// tengo que crear la dupla de cartas.
 			cartasDelNivel.add(cartas.get(i));
 			cartasDelNivel.add(cartas.get(i));
 		}
+	}
+	
+	private void mezclarCartas() {
+		Collections.shuffle(cartas);
 	}
 	
 	public int getIntentos() {
