@@ -151,13 +151,32 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 		}
 	}
 	
+	private void newLevel() {
+		juego.reset();
+		juego.init();
+		this.getContentPane().removeAll();
+		this.run();
+		this.repaint();
+		
+	}
+	
 	private void updateSocre() {
 		marcador.updateAdivinadas(Integer.toString(juego.getAdivinadas()));
 		marcador.updateIntentos(Integer.toString(juego.getIntentos()));
 	}
 	
 	private void juegoGanado() {
-
+		int dialogButton = JOptionPane.YES_NO_OPTION;
+		int dialogResult =  JOptionPane.showConfirmDialog (null, "Queres jugar el proximo nivel?","PokeCards",dialogButton);
+		switch (dialogResult) {
+			case 0:
+				this.newLevel();
+				break;
+			case 1:
+				break;
+			default:
+				break;
+		}
 	}
 
 }
