@@ -26,7 +26,6 @@ public class Juego {
 	
 	public void nuevoLevel() {
 		level++;
-		reset();
 	}
 	
 	public void reset() {
@@ -47,7 +46,7 @@ public class Juego {
 	
 	public void proximoLevel() {
 		level++;
-		repartir(level);
+		init();
 	}
 	
 	public ArrayList<Carta> getCartas() {
@@ -58,7 +57,7 @@ public class Juego {
 		return cartasDelNivel.size();
 	}
 	
-	private void repartir(int level) {
+	private void repartir() {
 		int cantidadPares = level+1;
 	}
 	

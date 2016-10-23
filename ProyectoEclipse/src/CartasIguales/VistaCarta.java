@@ -21,7 +21,7 @@ public class VistaCarta extends JButton {
 	private boolean flipped;
 	private static final int width = 200;
 	private static final int height = 200;
-	private static final String tapa = "/imagenes/pokeball.jpg";
+	private static final String tapa = "/imagenes/card.jpg";
 	
 	public VistaCarta(int id, String frente) {
 		this.id = id;
@@ -50,6 +50,7 @@ public class VistaCarta extends JButton {
 				flipped = false;
 			}
 		}
+		this.repaint();
 	}
 	
 	public void lock() {
@@ -67,7 +68,8 @@ public class VistaCarta extends JButton {
 	private void setImagen(String imgSource) {
 	  try {
 		    Image img = ImageIO.read(getClass().getResource(imgSource));
-		    setIcon(new ImageIcon(img));
+		    Image newimg = img.getScaledInstance( width-20, height-20,  java.awt.Image.SCALE_SMOOTH ) ;
+		    setIcon(new ImageIcon(newimg));
 		  } catch (IOException ex) {
 		  }
 	}
