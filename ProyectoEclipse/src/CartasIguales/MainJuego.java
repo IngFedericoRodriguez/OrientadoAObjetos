@@ -60,7 +60,6 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	public void run() {
-
 		crearTablero(juego.getCuentaCartas());
 		llenarTablero();
 		tablero.setVisible(true);
@@ -79,19 +78,17 @@ public class MainJuego extends JFrame implements ActionListener, Runnable {
 	}
 	
 	private void crearTablero(int total) {
-		// hardcoded
-		// esto dice que el tablero es de 2 x 2
-		int i = 2;
+		int filas = 2;
+		int columnas = total%3 == 0 ? total/3 : total/2;
 		boolean encontrado = false;
-		// Que es este 9 que meti aca ?
-		while (i <= 9 && !encontrado) {
-			// tengo que encontrar una matris de NxN
-			if(total/2%i == 0) {
-				tablero = new Tablero(total/2, total/2);
+		while (!encontrado && filas < total) {
+			if(filas * columnas == total) {
+				tablero = new Tablero(columnas, filas);
 				encontrado = true;
 				this.getContentPane().add(tablero, BorderLayout.NORTH);
-			}
-			i++;
+			} else {
+				filas++;
+			} 
 		}
 	}
 	
