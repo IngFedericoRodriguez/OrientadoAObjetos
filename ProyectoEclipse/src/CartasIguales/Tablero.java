@@ -17,17 +17,18 @@ public class Tablero extends JPanel {
 	
 	
 	public Tablero(int filas, int columnas) {
+		
 		this.filas = filas;
 		this.columnas = columnas;
 		// hardcoded dimension. Hay que meter un config file o algo asi.
-		setPreferredSize(new Dimension(filas * 200, columnas * 200));
+		setPreferredSize(new Dimension(750, 600));
 		crearLayout();
 		setearGaps();
 	}
 	
 	private void setearGaps() {
-		layout.setHgap(10);
-		layout.setVgap(10);
+		layout.setHgap(2);
+		layout.setVgap(2);
 	}
 	
 	private void crearLayout() {

@@ -1,5 +1,6 @@
 package CartasIguales;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -15,6 +16,7 @@ public class Marcador extends JPanel {
 	private final static String  adString = "Advinadas: ";
 	
 	public Marcador() {
+		setPreferredSize(new Dimension(50, 600));
 		generarLayout();
 		intentos = new JLabel(intString + "0");
 		puntos = new JLabel(pString + "0");
