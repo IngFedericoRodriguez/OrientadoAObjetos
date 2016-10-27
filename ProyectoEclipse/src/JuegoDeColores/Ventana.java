@@ -53,13 +53,13 @@ public class Ventana extends JFrame
 				   System.exit(0);
 				  }
 				 });
-		  fileNew.addActionListener(new ActionListener(){
+/*		  fileNew.addActionListener(new ActionListener(){
 			  public void actionPerformed(ActionEvent e) {
 				   textField.setText("RojoClick");
 				    frase.setText("Elija la fruta color "+textField.getText());
 				  }
 				 });
-				 
+				 */
 		
 		
 			

@@ -1,5 +1,8 @@
 package JuegoDeColores;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import JuegoDeColores.JuegoColores;
 
 public class MainJuego {
@@ -15,18 +18,18 @@ public class MainJuego {
 		String colorGanador = juego.getColorGanador();
 		Ventana ventana=new Ventana();
 		ventana.setVisible(true); 
-/*		ImagenFruta imagenFruta1= new ImagenFruta(1,"rojo");
-		imagenFruta1.setBounds(800,20,200,20);
-		ventana.getContentPane().add(imagenFruta1);*/
+		
+		ventana.fileNew.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e) {
+				   ventana.textField.setText(colorGanador);
+				    ventana.frase.setText("Elija la fruta color "+ventana.textField.getText());
+				  }
+		 });
 		
 
 
 	}
 	
-	public String nuevoJuego(){
-		JuegoColores juego= new JuegoColores();
-		String colorGanador = juego.getColorGanador();
-		return colorGanador;
-	}
+
 
 }
