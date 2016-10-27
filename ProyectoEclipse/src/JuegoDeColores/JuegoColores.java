@@ -38,7 +38,7 @@ public class JuegoColores {
 		
 	}
 	
-	public String getColorGanadora(){
+	public String getColorGanador(){
 		return frutaGanadora.getColor();
 		
 	}

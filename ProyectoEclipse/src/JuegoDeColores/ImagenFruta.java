@@ -15,10 +15,7 @@ public class ImagenFruta extends JButton{
 	public ImagenFruta(int id, String color) {
 		this.id = id;
 		this.color =color;
-		setPreferredSize(new Dimension(200, 200));
-		setBorder(BorderFactory.createEmptyBorder());
-		setContentAreaFilled(false);
-		setBorder(null);
+		this.setText(color);
 	}
 	
 
