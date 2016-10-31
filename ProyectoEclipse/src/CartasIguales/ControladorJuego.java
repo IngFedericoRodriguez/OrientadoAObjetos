@@ -15,12 +15,6 @@ public class ControladorJuego implements ActionListener {
 	private VentanaJuego ventana;
 	private Marcador marcador;
 	
-	
-	public static void main(String[] args) {
-		ControladorJuego  inst = new ControladorJuego(new Juego());
-		inst.jugar();
-	}
-	
 	public ControladorJuego(Juego juego) {
 		this.juego = juego;
 		ventana = new VentanaJuego();

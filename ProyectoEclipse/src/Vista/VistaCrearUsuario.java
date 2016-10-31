@@ -2,11 +2,13 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.Hashtable;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
@@ -16,27 +18,16 @@ public class VistaCrearUsuario extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtEmail;
+	private JButton crearUsuario;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaCrearUsuario frame = new VistaCrearUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public VistaCrearUsuario(JButton crearUsuario) {
+		this.crearUsuario = crearUsuario;
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public VistaCrearUsuario() {
+	public void setVisible(boolean aFlag) {
 		setTitle("Crear Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 362, 194);
@@ -49,9 +40,8 @@ public class VistaCrearUsuario extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(244, 126, 93, 29);
-		panel.add(btnAgregar);
+		crearUsuario.setBounds(244, 126, 93, 29);
+		panel.add(crearUsuario);
 		
 		JLabel lblNombre = new JLabel("Email");
 		lblNombre.setBounds(46, 76, 61, 16);
@@ -74,5 +64,24 @@ public class VistaCrearUsuario extends JFrame {
 		txtEmail.setBounds(119, 71, 218, 26);
 		panel.add(txtEmail);
 		txtEmail.setColumns(10);
+		super.setVisible(aFlag);
 	}
+	
+	public Hashtable<String, String> getUserData() {
+		Hashtable<String, String> userData = new Hashtable<String, String>();
+		userData.put("nombre", txtNombre.getText());
+		userData.put("email", txtEmail.getText());
+		return userData;
+	}
+	
+	public void camposVacios() {
+		JOptionPane.showMessageDialog(null, "Nombre y Email son campos requeridos");
+	}
+	
+	public void usuarioCreado() {
+		JOptionPane.showMessageDialog(null, "Usuario creado");
+	}
+	
+	
+	
 }

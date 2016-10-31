@@ -4,11 +4,7 @@ import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-
 import javax.swing.*;
-
-import Controlador.mainJuego;
-
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Label;
@@ -20,58 +16,81 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
-public class VistaJuego {
-
-	private mainJuego game;
+public class VistaJuego extends JFrame {
+	private JButton btnjugar;
+	private JButton btncrearUsuarios;
+	private JButton btnlistarUsuarios;
+	private JButton btnLogin;
 	
-	public VistaJuego(){
-		game = new mainJuego();
-	}
-	public static void main(String[] args) {
-		VistaJuego main = new VistaJuego();
-		main.mostrarMenu();
+	public VistaJuego(JButton btnjugar, JButton btncrearUsuarios, JButton btnlistarUsuarios, JButton btnLogin) {
+		super("Main menu");
+		this.btnjugar = btnjugar;
+		this.btncrearUsuarios = btncrearUsuarios;
+		this.btnlistarUsuarios = btnlistarUsuarios;
+		this.btnLogin = btnLogin;
 	}
 
-	public void mostrarMenu() {
-		JFrame frmJuego = new JFrame("Main menu");
-		frmJuego.setTitle("Juego");
-		frmJuego.setAutoRequestFocus(false);
-		frmJuego.setSize(648, 465);
-		frmJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	public JButton getBtnjugar() {
+		return btnjugar;
+	}
+
+	public void setBtnjugar(JButton btnjugar) {
+		this.btnjugar = btnjugar;
+	}
+
+	public JButton getBtncrearUsuarios() {
+		return btncrearUsuarios;
+	}
+
+	public void setBtncrearUsuarios(JButton btncrearUsuarios) {
+		this.btncrearUsuarios = btncrearUsuarios;
+	}
+
+	public JButton getBtnlistarUsuarios() {
+		return btnlistarUsuarios;
+	}
+
+	public void setBtnlistarUsuarios(JButton btnlistarUsuarios) {
+		this.btnlistarUsuarios = btnlistarUsuarios;
+	}
+
+	public JButton getBtnLogin() {
+		return btnLogin;
+	}
+
+	public void setBtnLogin(JButton btnLogin) {
+		this.btnLogin = btnLogin;
+	}
+
+	public void setVisible(boolean aFlag) {
+		this.setTitle("Juego");
+		this.setAutoRequestFocus(false);
+		this.setSize(648, 465);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel Menu = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) Menu.getLayout();
 		flowLayout.setAlignOnBaseline(true);
-		frmJuego.getContentPane().add(Menu, BorderLayout.SOUTH);
+		this.getContentPane().add(Menu, BorderLayout.SOUTH);
 		
 		Box verticalBox = Box.createVerticalBox();
 		verticalBox.setFont(new Font("Dialog", Font.BOLD, 12));
 		Menu.add(verticalBox);
 		
-		JButton btnjugar = new JButton("Jugar");
-		btnjugar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vamos a jugar!!!");
-			}
-		});
 		verticalBox.add(btnjugar);
 		btnjugar.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		JButton btncrearUsuarios = new JButton("Crear Usuario");
+		verticalBox.add(btnLogin);
+		btnjugar.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 		btncrearUsuarios.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btncrearUsuarios);
 		
-		JButton btnlistarUsuarios = new JButton("Listar Usuarios");
-		btnlistarUsuarios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vamos a listar usuarios!!!");
-				VistaListarUsuarios viewTableUser = new VistaListarUsuarios();
-			}
-		});
 		btnlistarUsuarios.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnlistarUsuarios);
-		
-		JButton btnBorrarUsuario = new JButton("Borrar Usuario");
+																									
+		/*JButton btnBorrarUsuario = new JButton("Borrar Usuario");
 		btnBorrarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Vamos a borrar usuarios!!!");
@@ -79,14 +98,11 @@ public class VistaJuego {
 		});
 		btnBorrarUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnBorrarUsuario);
-		
+		*/
 		JLabel imgJuego = new JLabel("Imagen");
 		imgJuego.setHorizontalAlignment(SwingConstants.CENTER);
-		frmJuego.getContentPane().add(imgJuego, BorderLayout.CENTER);
-		btncrearUsuarios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Vamos a Crear Usuarios!!!");			}
-		});
-		frmJuego.setVisible(true);
+		this.getContentPane().add(imgJuego, BorderLayout.CENTER);
+
+		super.setVisible(true);
 	}
 }
