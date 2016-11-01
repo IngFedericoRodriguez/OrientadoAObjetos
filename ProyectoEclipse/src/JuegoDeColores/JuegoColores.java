@@ -47,4 +47,9 @@ public class JuegoColores {
 	public boolean compararColor(String color){
 		return color.equals(frutaGanadora.getColor());		
 	}
+
+	public void init() {
+		// TODO Auto-generated method stub
+		
+	}
 }

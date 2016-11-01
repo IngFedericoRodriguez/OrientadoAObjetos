@@ -44,6 +44,7 @@ public class Ventana extends JFrame
 		 
 		 setupMenuBar();
 		 layoutComponents();
+
 		
 		  
 		 
@@ -69,6 +70,13 @@ public class Ventana extends JFrame
 				   
 				  }
 				 });
+		  
+/*		  imagenFruta1.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e) {
+				  ventana.actualizarFrase("Elija fruta color "+colorGanador);
+				  ventana.actualizarPuntos(0);
+				  }
+		 });*/
 				 
 				
 	 }
@@ -86,7 +94,7 @@ public class Ventana extends JFrame
 		 getContentPane().setLayout(null);
 		 textField.setBounds(80,80,150,30);
 //		 getContentPane().add(textField);
-		 puntos.setText("puntos: "+puntosNum);
+		 puntos.setText("Puntos: "+puntosNum);
 		 puntos.setBounds(800,20,200,20);
 		 getContentPane().add(puntos);
 		 
@@ -111,8 +119,18 @@ public class Ventana extends JFrame
 		 imagenFruta3.setBounds(700,300,ancho,altura);
 		 getContentPane().add(imagenFruta3);
 	 }
+	 
+	 public void actualizarFrase(String Frase){
+		 textField.setText(Frase);
+		 frase.setText(textField.getText());
+		 
+	 }
 
-
+	 public void actualizarPuntos(int Puntos){
+		 puntosNum=Puntos;
+		 puntos.setText("Puntos: "+" "+ puntosNum);
+		 
+	 }
 	
  
 
