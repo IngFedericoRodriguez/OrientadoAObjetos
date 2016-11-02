@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import CartasIguales.ControladorJuego;
 import CartasIguales.Juego;
 import CartasIguales.VistaCarta;
 import Vista.VistaCrearUsuario;
 import Vista.VistaJuego;
+import Vista.VistaLogin;
 
 // Main modelo controlador.-
 
@@ -23,6 +25,7 @@ public class ControladorUsuarios implements ActionListener {
 	private VistaJuego ventana;
 	private ControladorJuego cartasIguales;
 	private VistaCrearUsuario vistaCrearUsuario;
+	private VistaLogin vistaLogin;
 
 	public ControladorUsuarios() {
 		usuarios = new ArrayList<Usuario>();
@@ -37,9 +40,9 @@ public class ControladorUsuarios implements ActionListener {
 			this.vistaCrearUsuario.camposVacios();
 		}
 		Usuario user = new Usuario(nombre, email); 
+		usuarios.add(user);
 		this.vistaCrearUsuario.usuarioCreado();
-		this.vistaCrearUsuario.setVisible(false);
-		this.vistaCrearUsuario.dispose();
+		closeWindow(vistaCrearUsuario);
 	}
 	
 	public void listarUsuarios() {
@@ -48,6 +51,11 @@ public class ControladorUsuarios implements ActionListener {
 				// esto deberia crear una vista y pasarsela al frame ppal.
 			}
 		}
+	}
+	
+	private void closeWindow(JFrame frame) {
+		frame.setVisible(false);
+		frame.dispose();
 	}
 	
 	public void quitarUsuario(String email){
@@ -61,8 +69,9 @@ public class ControladorUsuarios implements ActionListener {
 	public void loguearUsuario(String email) {
 		boolean found = false;
 		int i = 0;
+		
 		while (!found && i< usuarios.size()) {
-			if (usuarios.get(i).getEmail() == email) {
+			if (usuarios.get(i).getEmail().equals(email)) {
 				this.usuario = usuarios.get(i);
 				usuarioLogueado = true;
 				found = true;
@@ -70,6 +79,13 @@ public class ControladorUsuarios implements ActionListener {
 				i++;
 			}
 		}
+		if(found) {
+			vistaLogin.usuarioLogueado();
+			closeWindow(vistaLogin);
+		} else {
+			vistaLogin.usuarioNoEncontrado();
+		}
+		
 	}
 	
 	private void jugarCartasIguales() {
@@ -126,24 +142,34 @@ public class ControladorUsuarios implements ActionListener {
 		vistaCrearUsuario.setVisible(true);
 	}
 	
+	private void iniciarGuiLogin() {
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(this);
+		vistaLogin = new VistaLogin(btnLogin);
+		vistaLogin.setVisible(true);
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		// Esto es re cabeza, hay que cambiarlo, vamos a switchear por labels los botones para ver que hacemos.
 		// Hay que buscar una forma de que sepamos que botones se estan apretando para no tener que hacer esto.
 		JButton pressedButton = (JButton) e.getSource();
 		switch (pressedButton.getText()) {
 			case "Jugar Cartas Iguales":
-				this.jugarCartasIguales();
+				jugarCartasIguales();
 				break;
 			case "Crear Usuario": 
-				this.iniciarGuiCrearUsuario();
+				iniciarGuiCrearUsuario();
 				break;
 			case "Listar Usuarios":
 				break;
 			case "loguearse": 
+				iniciarGuiLogin();
 				break;
 			case "Grabar usuario":
 				grabarUsuario(vistaCrearUsuario.getUserData());
 				break;
+			case "Login":
+				loguearUsuario(vistaLogin.get());
 			default:
 				System.out.println(pressedButton.getText());
 		}
