@@ -28,14 +28,12 @@ public class JuegoColores {
 		Fruta fruta4= new Fruta(4,"Sandia","Verde");
 		frutas.add(fruta4);
 		Fruta fruta5= new Fruta(5,"Pomelo","Amarillo");
-		frutas.add(fruta5);
-		
+		frutas.add(fruta5);		
 	}
-
+	
 	private void frutaGanadora(){
 		Random randomGenerator= new Random();
-		frutaGanadora= frutas.get(randomGenerator.nextInt(frutas.size())); //tomo un elemento random del arraylist
-		
+		frutaGanadora = frutas.get(randomGenerator.nextInt(frutas.size())); //tomo un elemento random del arraylist	
 	}
 	
 	public String getColorGanador(){

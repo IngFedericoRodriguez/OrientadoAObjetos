@@ -56,7 +56,6 @@ public class ControladorJuego implements ActionListener {
 		} else {
 			VistaCarta vistaCarta = (VistaCarta) e.getSource();
 			if(!vistaCarta.isFlipped()){
-				System.out.println(Integer.toString(state));
 				switch (state) {
 					case 0:
 						carta1 = vistaCarta;

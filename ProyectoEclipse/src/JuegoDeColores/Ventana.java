@@ -2,96 +2,89 @@ package JuegoDeColores;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
-public class Ventana extends JFrame 
+import CartasIguales.Marcador;
+import CartasIguales.Tablero;
+import CartasIguales.VistaCarta;
+
+public class Ventana extends JFrame implements ActionListener
 {
-	 /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int WIDTH = 1000;
-	 private int HEIGHT = 800;
+	private int HEIGHT = 800;
+	private Marcador marcador;
+	private VistaPregunta vistaPregunta;
+	private Tablero tablero;
+	private MainJuego controller;
 	
-	
-	 // Swing components
-	 JLabel puntos = new JLabel();
-	 JLabel frase = new JLabel();
-	 JLabel textField = new JLabel();
-	 int puntosNum=0;
-	 JMenuBar menuBar = new JMenuBar();
-	 JMenu fileMenu = new JMenu("File");
-	 JMenuItem fileNew = new JMenuItem("New");
-	 JMenuItem fileExit = new JMenuItem("Exit");
-
-//	 JButton imagenFruta1 =new JButton("rojo");
-	 
-	 public Ventana() 
-	 {
-		 
-		  buildGUI();
+	 public Ventana(String name) {
+		  super(name);
 		  setSize(WIDTH,HEIGHT);
 		  setResizable(false);
 	 }
 	 
-	 void buildGUI() 
-	 {
-		 setTitle("SwingWin");
-		 menuBar = new JMenuBar();
-		 fileMenu = new JMenu("Opciones");
-		 fileNew = new JMenuItem("Nuevo Juego");
-		 fileExit = new JMenuItem("Exit");
-		 
-		 setupMenuBar();
-		 layoutComponents();
+	 public void setController(MainJuego controller) {
+		 this.controller = controller;
+	 }
+	 
+	 public void setVisible(boolean aFlag) {
+		 setBaseLayout();
+		 agregarMarcador();
+		 agregarPregunta();
+		 agregarTablero();
+		 marcador.setVisible(aFlag);
+		 vistaPregunta.setVisible(aFlag);
+		 tablero.setVisible(aFlag);
+		 super.setVisible(aFlag);
+		 this.pack();
+	 }
+	 
+	 private void agregarMarcador() {
+		 marcador = new Marcador();
+		 this.getContentPane().add(marcador);
+	 }
+	 
+	 private void agregarPregunta() {
+		 vistaPregunta = new VistaPregunta();
+		 this.getContentPane().add(vistaPregunta);
+	 }
+	 
+	 private void agregarTablero() {
+		 // TODO: Sacar despues:
+		 ArrayList<VistaCarta> botones = new ArrayList<VistaCarta>();
+		 VistaCarta carta1 = new VistaCarta(1, "/imagenes/card.jpg");
+		 carta1.addActionListener(this);
+		 VistaCarta carta2 = new VistaCarta(1, "/imagenes/card.jpg");
+		 carta2.addActionListener(this);
+		 botones.add(carta1);
+		 botones.add(carta2);
+		 tablero = new Tablero(botones);
+		 this.getContentPane().add(tablero);
+	 }
+	 
+	 private void setBaseLayout() {
+		GridLayout layout = new GridLayout(3,0);
+		layout.setHgap(5);
+		layout.setVgap(5);
+		getContentPane().setLayout(layout);
+	 }
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		VistaCarta carta = (VistaCarta) e.getSource();
+		if(carta.getId() == 1) {
+			controller.adivinarColor("Naranja");
+		} else {
+			controller.adivinarColor("Rojo");
+		}
 		
-		  
-		 
-		 //listener
-		 addWindowListener(new WindowAdapter(){
-			  public void windowClosing(WindowEvent e) {
-				   System.exit(0);
-				  }
-				 });
-/*		  fileNew.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent e) {
-				   textField.setText("RojoClick");
-				    frase.setText("Elija la fruta color "+textField.getText());
-				  }
-				 });
-				 */
-		
-		
-			
-		  fileExit.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent e) {
-				   System.exit(0);
-				   
-				  }
-				 });
-		  
-/*		  imagenFruta1.addActionListener(new ActionListener(){
-			  public void actionPerformed(ActionEvent e) {
-				  ventana.actualizarFrase("Elija fruta color "+colorGanador);
-				  ventana.actualizarPuntos(0);
-				  }
-		 });*/
-				 
-				
-	 }
-	
-	 private void setupMenuBar() 
+	}
+	 	
+	 /*public void layoutComponents() 
 	 {
-		  fileMenu.add(fileNew); 
-		  fileMenu.add(fileExit); 
-		  menuBar.add(fileMenu);
-		  setJMenuBar(menuBar);
-	 }
-	
-	 public void layoutComponents() 
-	 {
-		 getContentPane().setLayout(null);
 		 textField.setBounds(80,80,150,30);
 //		 getContentPane().add(textField);
 		 puntos.setText("Puntos: "+puntosNum);
@@ -130,7 +123,7 @@ public class Ventana extends JFrame
 		 puntosNum=Puntos;
 		 puntos.setText("Puntos: "+" "+ puntosNum);
 		 
-	 }
+	 }*/
 	
  
 
