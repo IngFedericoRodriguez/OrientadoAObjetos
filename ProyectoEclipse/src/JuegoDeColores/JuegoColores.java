@@ -48,6 +48,6 @@ public class JuegoColores {
 
 	public void init() {
 		// TODO Auto-generated method stub
-		
+		frutaGanadora();
 	}
 }

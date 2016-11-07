@@ -17,13 +17,14 @@ public class Ventana extends JFrame implements ActionListener
 	private int HEIGHT = 800;
 	private Marcador marcador;
 	private VistaPregunta vistaPregunta;
-	private Tablero tablero;
+	private TableroFrutas tablero;
 	private MainJuego controller;
 	
 	 public Ventana(String name) {
 		  super(name);
 		  setSize(WIDTH,HEIGHT);
 		  setResizable(false);
+		  setListeners();
 	 }
 	 
 	 public void setController(MainJuego controller) {
@@ -52,16 +53,22 @@ public class Ventana extends JFrame implements ActionListener
 		 this.getContentPane().add(vistaPregunta);
 	 }
 	 
+	 public void modificarPregunta(String pregunta){
+		 this.vistaPregunta.setPregunta(pregunta);
+	 }
+	 
 	 private void agregarTablero() {
 		 // TODO: Sacar despues:
-		 ArrayList<VistaCarta> botones = new ArrayList<VistaCarta>();
-		 VistaCarta carta1 = new VistaCarta(1, "/imagenes/card.jpg");
-		 carta1.addActionListener(this);
-		 VistaCarta carta2 = new VistaCarta(1, "/imagenes/card.jpg");
+	//	 ArrayList<VistaCarta> botones = new ArrayList<VistaCarta>();
+		 
+		 ArrayList<ImagenFruta> botones = new ArrayList<ImagenFruta>();
+	//	 VistaCarta carta1 = new VistaCarta(1, "/imagenes/card.jpg");
+	//	 carta1.addActionListener(this);
+		 ImagenFruta carta2 = new ImagenFruta(2, "rojo");
 		 carta2.addActionListener(this);
-		 botones.add(carta1);
+	//	 botones.add(carta1);
 		 botones.add(carta2);
-		 tablero = new Tablero(botones);
+		 tablero = new TableroFrutas(botones);
 		 this.getContentPane().add(tablero);
 	 }
 	 
@@ -70,17 +77,49 @@ public class Ventana extends JFrame implements ActionListener
 		layout.setHgap(5);
 		layout.setVgap(5);
 		getContentPane().setLayout(layout);
+		VistaMenu menuBar= new VistaMenu();
+		
+		//selectores desplegables
+		menuBar.fileNew.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e) {
+				   controller.juegoNuevo();
+				   }
+				 });
+		
+		menuBar.fileExit.addActionListener(new ActionListener(){
+			  public void actionPerformed(ActionEvent e) {
+				   System.exit(0);
+				   
+				  }
+				 });
+		this.setJMenuBar(menuBar.menu);
+		
+	 }
+	 
+	 
+	 private void setListeners(){
+		 addWindowListener(new WindowAdapter(){
+			  public void windowClosing(WindowEvent e) {
+				   System.exit(0);
+				  }
+				 });
+		 
+		  
+			
+
+		 
+			 
 	 }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		VistaCarta carta = (VistaCarta) e.getSource();
-		if(carta.getId() == 1) {
+		ImagenFruta carta = (ImagenFruta) e.getSource();
+		if(carta.getId() == 2) {
 			controller.adivinarColor("Naranja");
 		} else {
 			controller.adivinarColor("Rojo");
 		}
-		
+				
 	}
 	 	
 	 /*public void layoutComponents() 

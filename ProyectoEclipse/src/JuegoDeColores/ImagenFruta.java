@@ -3,7 +3,9 @@ package JuegoDeColores;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class ImagenFruta extends JButton{
@@ -20,6 +22,7 @@ public class ImagenFruta extends JButton{
 		this.color =color;
 		this.setText(color);
 		this.addActionListener(e);
+		setImagen("/imagenes/card.jpg");
 	}
 	
 
@@ -31,4 +34,13 @@ public class ImagenFruta extends JButton{
 	public int getId() {
 		return id;
 	}
+	
+	private void setImagen(String imgSource) {
+		  try {
+			    Image img = ImageIO.read(getClass().getResource(imgSource));
+			    Image newimg = img.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;
+			    setIcon(new ImageIcon(newimg));
+			  } catch (IOException ex) {
+			  }
+		}
 }

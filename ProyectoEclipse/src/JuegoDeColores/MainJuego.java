@@ -29,10 +29,11 @@ public class MainJuego {
 	}
 	
 	public void jugar() {
-		juegoColores.init();
+		
 		ventana = new Ventana("Jueguito de frutas");
 		ventana.setController(this);
 		ventana.setVisible(true);
+		juegoNuevo();
 	}
 	
 	public void adivinarColor(String color) {
@@ -41,6 +42,15 @@ public class MainJuego {
 		} else {
 			System.out.println("Perdiste");
 		}
+	}
+	
+	public void juegoNuevo(){
+		System.out.println("Has iniciado un juego Nuevo");
+		juegoColores.init();
+		String colorGanador= juegoColores.getColorGanador();
+		ventana.modificarPregunta("Elige la fruta Color "+ colorGanador);
+		
+		
 	}
 	
 	
