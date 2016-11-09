@@ -7,12 +7,10 @@ public class Score {
 	private int aciertos;
 	private int puntos;
 
-	public Score(String juego, int nivel, int intentos, int aciertos, int puntos) {
+	public Score(String juego) {
 		this.juego = juego;
-		this.intentos = intentos;
-		this.aciertos = aciertos;
-		this.puntos = puntos;
-		this.nivel = nivel;
+		this.puntos = 0;
+		this.nivel = 1;
 	}
 
 	public int getNivel() {

@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import javax.swing.JFrame;
@@ -13,22 +15,27 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
-	public class VistaLogin extends JFrame {
+import usuario.ControladorUsuarios;
+
+	public class VistaLogin extends JFrame implements ActionListener {
 
 		private JPanel contentPane;
 		private JTextField txtEmail;
 		private JButton btnLogin;
+		private ControladorUsuarios controlador;
 
 		/**
 		 * Launch the application.
 		 */
-		public VistaLogin(JButton btnLogin) {
-			this.btnLogin = btnLogin;
+		public VistaLogin(ControladorUsuarios controlador) {
+			btnLogin = new JButton("Login");
+			btnLogin.addActionListener(this);
+			this.controlador = controlador;
 		}
 
 		public void setVisible(boolean aFlag) {
 			setTitle("Loguearse");
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			setBounds(100, 100, 362, 194);
 			contentPane = new JPanel();
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,7 +56,7 @@ import javax.swing.JLabel;
 			super.setVisible(aFlag);
 		}
 		
-		public String get() {
+		private String getEmail() {
 			return txtEmail.getText();
 		}
 		
@@ -59,6 +66,12 @@ import javax.swing.JLabel;
 		
 		public void usuarioNoEncontrado() {
 			JOptionPane.showMessageDialog(null, "Usuario no encontrado, por favor ingresar mail existente");
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JButton pressedButton = (JButton) e.getSource();
+			controlador.loguearUsuario(getEmail());	
 		}	
 		
 	}

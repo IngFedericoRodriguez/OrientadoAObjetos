@@ -8,12 +8,14 @@ public class Juego {
 	private int level;
 	private int intentos;
 	private int adivinadas;
+	private int puntos;
 	private ArrayList<Carta> cartas;
 	private ArrayList<Carta> cartasDelNivel;
 	
 	//Sobrecarga
 	public Juego(int level) {
 		this.level = level;
+		puntos = 0;
 		cartas = new ArrayList<Carta>();
 		reset();
 	}
@@ -73,6 +75,7 @@ public class Juego {
 		boolean match = selected1 == selected2;
 		if(match) {
 			adivinadas++;
+			incrementarPuntos();
 		} else {
 			intentos++;
 		}
@@ -121,6 +124,18 @@ public class Juego {
 	
 	public int getAdivinadas() {
 		return adivinadas;
+	}
+	
+	private void incrementarPuntos() {
+		puntos += 10;
+	}
+	
+	public int getPuntos() {
+		return this.puntos;
+	}
+	
+	public int getLevel() {
+		return level;
 	}
 
 }

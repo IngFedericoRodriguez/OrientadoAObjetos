@@ -36,7 +36,23 @@ public class Usuario  {
 		this.email = email;
 	}
 	
-	public boolean soselUsuario(String clave) {
-		return this.nombre.equals(clave);
+	public  Score getScore(String nombreJuego) {
+		for (Score score : scores) {
+			if (score.getJuego() == nombreJuego) {
+				return score;
+			}
+		}
+		Score newscore = new Score(nombreJuego);
+		this.scores.add(newscore);
+		return newscore;
+	}
+	
+	public int getPuntuacion(String nombreJuego) {
+		for (Score score : scores) {
+			if (score.getJuego() == nombreJuego) {
+				return score.getPuntos();
+			}
+		}
+		return 0;
 	}
 }

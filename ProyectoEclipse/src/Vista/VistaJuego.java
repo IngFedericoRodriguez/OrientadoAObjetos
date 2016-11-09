@@ -4,7 +4,11 @@ import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
 import javax.swing.*;
+
+import usuario.ControladorUsuarios;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Label;
@@ -16,51 +20,44 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 
 @SuppressWarnings("unused")
-public class VistaJuego extends JFrame {
+public class VistaJuego extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton btnjugar;
-	private JButton btncrearUsuarios;
+	private JButton btncrearUsuario;
 	private JButton btnlistarUsuarios;
 	private JButton btnLogin;
+	private JButton btnJugarCartasIguales;
+	private ControladorUsuarios controlador;
+	private Box verticalBox;
 	
-	public VistaJuego(JButton btnjugar, JButton btncrearUsuarios, JButton btnlistarUsuarios, JButton btnLogin) {
+	public VistaJuego() {
 		super("Main menu");
-		this.btnjugar = btnjugar;
-		this.btncrearUsuarios = btncrearUsuarios;
-		this.btnlistarUsuarios = btnlistarUsuarios;
-		this.btnLogin = btnLogin;
+		crearBotones();
 	}
-
 	
-	public JButton getBtnjugar() {
-		return btnjugar;
+	public void setControlador(ControladorUsuarios controlador) {
+		this.controlador = controlador;
 	}
+	
+	private void crearBotones() {
+		btncrearUsuario = new JButton("Crear Usuario");
+		btncrearUsuario.addActionListener(this);
+		btnlistarUsuarios = new JButton("Listar Usuarios");
+		btnlistarUsuarios.addActionListener(this);
+		btnLogin = new JButton("loguearse");
+		btnLogin.addActionListener(this);
+		btnJugarCartasIguales = new JButton("Jugar Cartas Iguales");
+		btnJugarCartasIguales.addActionListener(this);
 
-	public void setBtnjugar(JButton btnjugar) {
-		this.btnjugar = btnjugar;
 	}
-
-	public JButton getBtncrearUsuarios() {
-		return btncrearUsuarios;
-	}
-
-	public void setBtncrearUsuarios(JButton btncrearUsuarios) {
-		this.btncrearUsuarios = btncrearUsuarios;
-	}
-
-	public JButton getBtnlistarUsuarios() {
-		return btnlistarUsuarios;
-	}
-
-	public void setBtnlistarUsuarios(JButton btnlistarUsuarios) {
-		this.btnlistarUsuarios = btnlistarUsuarios;
-	}
-
-	public JButton getBtnLogin() {
-		return btnLogin;
-	}
-
-	public void setBtnLogin(JButton btnLogin) {
-		this.btnLogin = btnLogin;
+	
+	public void showGames() {
+		verticalBox.add(btnJugarCartasIguales);
+		btnJugarCartasIguales.setAlignmentX(Component.CENTER_ALIGNMENT);
+		super.setVisible(true);
 	}
 
 	public void setVisible(boolean aFlag) {
@@ -74,18 +71,15 @@ public class VistaJuego extends JFrame {
 		flowLayout.setAlignOnBaseline(true);
 		this.getContentPane().add(Menu, BorderLayout.SOUTH);
 		
-		Box verticalBox = Box.createVerticalBox();
+		verticalBox = Box.createVerticalBox();
 		verticalBox.setFont(new Font("Dialog", Font.BOLD, 12));
 		Menu.add(verticalBox);
 		
-		verticalBox.add(btnjugar);
-		btnjugar.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
 		verticalBox.add(btnLogin);
-		btnjugar.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
-		btncrearUsuarios.setAlignmentX(Component.CENTER_ALIGNMENT);
-		verticalBox.add(btncrearUsuarios);
+		btncrearUsuario.setAlignmentX(Component.CENTER_ALIGNMENT);
+		verticalBox.add(btncrearUsuario);
 		
 		btnlistarUsuarios.setAlignmentX(Component.CENTER_ALIGNMENT);
 		verticalBox.add(btnlistarUsuarios);
@@ -105,4 +99,26 @@ public class VistaJuego extends JFrame {
 
 		super.setVisible(true);
 	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton pressedButton = (JButton) e.getSource();
+		switch (pressedButton.getText()) {
+			case "Jugar Cartas Iguales":
+				controlador.jugarCartasIguales();
+				break;
+			case "Crear Usuario": 
+				controlador.iniciarGuiCrearUsuario();
+				break;
+			case "Listar Usuarios":
+				controlador.iniciarGuiListarUsuarios();
+				break;
+			case "loguearse": 
+				controlador.iniciarGuiLogin();
+				break;
+		}
+	}
+	
+
 }

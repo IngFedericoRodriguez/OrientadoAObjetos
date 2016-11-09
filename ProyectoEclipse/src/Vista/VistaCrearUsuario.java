@@ -2,6 +2,8 @@ package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 import javax.swing.JFrame;
@@ -13,23 +15,28 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
-public class VistaCrearUsuario extends JFrame {
+import usuario.ControladorUsuarios;
+
+public class VistaCrearUsuario extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtEmail;
 	private JButton crearUsuario;
+	private ControladorUsuarios controlador;
 
 	/**
 	 * Launch the application.
 	 */
-	public VistaCrearUsuario(JButton crearUsuario) {
-		this.crearUsuario = crearUsuario;
+	public VistaCrearUsuario(ControladorUsuarios controlador) {
+		crearUsuario = new JButton("Grabar usuario");
+		crearUsuario.addActionListener(this);
+		this.controlador = controlador;
 	}
 
 	public void setVisible(boolean aFlag) {
 		setTitle("Crear Usuario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 362, 194);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -80,6 +87,11 @@ public class VistaCrearUsuario extends JFrame {
 	
 	public void usuarioCreado() {
 		JOptionPane.showMessageDialog(null, "Usuario creado");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		controlador.grabarUsuario(getUserData());	
 	}
 	
 	

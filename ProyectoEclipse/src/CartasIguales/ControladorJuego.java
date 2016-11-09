@@ -3,16 +3,21 @@ package CartasIguales;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.Timer;
+
+import usuario.Usuario;
 
 public class ControladorJuego {
 	private Juego juego;
 	private VentanaJuego ventana;
+	private Usuario usuario;
 	
-	public ControladorJuego(Juego juego) {
+	public ControladorJuego(Juego juego, Usuario usuario) {
 		this.juego = juego;
+		this.usuario = usuario;
+		juego.setLevel(usuario.getScore("CartasIguales").getNivel());
 		ventana = new VentanaJuego();
-
 	}
 	
 	public void jugar() {
@@ -54,6 +59,10 @@ public class ControladorJuego {
 		return juego.getIntentos();
 	}
 	
+	public int getPuntos() {
+		return juego.getPuntos();
+	}
+	
 	private void crearNuevoNivel() {
 		juego.nuevoLevel();
 		juego.reset();
@@ -66,7 +75,12 @@ public class ControladorJuego {
 	}
 	
 	public boolean nivelGanado() {
-		return juego.nivelGanado();
+		if(juego.nivelGanado()) {
+			usuario.getScore("CartasIguales").agregarPuntos(juego.getPuntos());
+			usuario.getScore("CartasIguales").setNivel(juego.getLevel()+1);
+			return true;
+		} 
+		return false;
 	}
 	
 

@@ -36,7 +36,7 @@ public class VentanaJuego extends JFrame implements ActionListener {
 	public VentanaJuego() {
 		super("PokeMemoria");
 		this.setSize(800, 600);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBaseLayout();
 		 myTimer = new Timer(250, this);
 	}
@@ -110,7 +110,7 @@ public class VentanaJuego extends JFrame implements ActionListener {
     }
 	
 	private void updateSocre() {
-		
+		marcador.updatePuntos(Integer.toString(controladorJuego.getPuntos()));
 		marcador.updateAdivinadas(Integer.toString(controladorJuego.getAdivinadas()));
 		marcador.updateIntentos(Integer.toString(controladorJuego.getIntentos()));
 	}
