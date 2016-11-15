@@ -22,7 +22,7 @@ public class ImagenFruta extends JButton{
 		this.color =color;
 		this.setText(color);
 		this.addActionListener(e);
-		setImagen("/imagenes/card.jpg");
+		setImagen("/imagenes/Frutas/Mora.png");
 	}
 	
 
