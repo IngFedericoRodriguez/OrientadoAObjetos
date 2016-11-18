@@ -23,12 +23,14 @@ public class TableroFrutas extends JPanel {
 	public TableroFrutas(ArrayList<ImagenFruta> vistaCartas) {
 		vistas = vistaCartas;
 		// hardcoded dimension. Hay que meter un config file o algo asi.
-		setPreferredSize(new Dimension(750, 600));
+		setPreferredSize(new Dimension(700, 300));
+		//setBounds(100,100,100,100);
+		
 	}
 	
 	private void setearGaps() {
 		layout.setHgap(2);
-		layout.setVgap(2);
+		layout.setVgap(1);
 	}
 	
 	private void crearLayout() {
@@ -49,9 +51,18 @@ public class TableroFrutas extends JPanel {
 		super.setVisible(aFlag);
 	}
 	
+	public void setVisible1() {
+		layout = new GridLayout(3, 0);
+		layout.setHgap(2);
+		layout.setVgap(2);
+		setLayout(layout);
+		setVisible(true);
+		
+	}
+	
 	private void nuevoLayout() {
 		int elementosTotales = vistas.size();
-		int filas = 2;
+		int filas = 5;
 		int columnas = elementosTotales%3 == 0 ? elementosTotales/3 : elementosTotales/2;
 		boolean encontrado = false;
 		while (!encontrado && filas < elementosTotales) {

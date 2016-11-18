@@ -12,17 +12,19 @@ public class ImagenFruta extends JButton{
 	
 	private static final long serialVersionUID = 1L;
 	private int id;
+	private String imgSorce;
 	private String color;
 	ActionListener e;
 	
 	
 	
-	public ImagenFruta(int id, String color) {
+	public ImagenFruta(int id,String imgSorce, String color) {
 		this.id = id;
 		this.color =color;
+		this.imgSorce= imgSorce;
 		this.setText(color);
 		this.addActionListener(e);
-		setImagen("/imagenes/Frutas/Mora.png");
+		setImagen(imgSorce);
 	}
 	
 
@@ -35,11 +37,18 @@ public class ImagenFruta extends JButton{
 		return id;
 	}
 	
+	public String getImgSource() {
+		return imgSorce;
+	}
+	
 	private void setImagen(String imgSource) {
 		  try {
 			    Image img = ImageIO.read(getClass().getResource(imgSource));
+			//	System.out.println("Imagen fruta "+imgSource);
 			    Image newimg = img.getScaledInstance( 100, 100,  java.awt.Image.SCALE_SMOOTH ) ;
-			    setIcon(new ImageIcon(newimg));
+			    this.setIcon(new ImageIcon(newimg));
+			 //   System.out.println("Imagen fruta "+img);
+			 //   System.out.println("Imagen fruta "+newimg);
 			  } catch (IOException ex) {
 			  }
 		}

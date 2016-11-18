@@ -14,8 +14,8 @@ public class Ventana extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	private int WIDTH = 1000;
-	private int HEIGHT = 800;
-	private Marcador marcador;
+	private int HEIGHT = 1000;
+	private MarcadorFrutas marcador;
 	private VistaPregunta vistaPregunta;
 	private TableroFrutas tablero;
 	private MainJuego controller;
@@ -33,34 +33,38 @@ public class Ventana extends JFrame implements ActionListener
 	 
 	 public void setVisible(boolean aFlag) {
 		 setBaseLayout();
-		 agregarMarcador();
+		 agregarMarcadorFrutas();
 		 agregarPregunta();
-		 agregarTablero();
+		
+//		 tablero.setVisible(aFlag);
+		
+		
+		 //agregarTablero2();
 		 marcador.setVisible(aFlag);
 		 vistaPregunta.setVisible(aFlag);
-		 tablero.setVisible(aFlag);
+	
 		 super.setVisible(aFlag);
 		 this.pack();
 	 }
 	 
-	 private void agregarMarcador() {
-		 marcador = new Marcador();
-		 this.getContentPane().add(marcador);
+	 private void agregarMarcadorFrutas() {
+		 marcador = new MarcadorFrutas();
+		 this.add(marcador);
 	 }
 	 
 	 private void agregarPregunta() {
 		 vistaPregunta = new VistaPregunta();
-		 this.getContentPane().add(vistaPregunta);
+		 this.add(vistaPregunta);
 	 }
 	 
 	 public void modificarPregunta(String pregunta){
 		 this.vistaPregunta.setPregunta(pregunta);
 	 }
 	 
-	 private void agregarTablero() {
+	/* private void agregarTablero() {
 		 // TODO: Sacar despues:
 	//	 ArrayList<VistaCarta> botones = new ArrayList<VistaCarta>();
-		 
+	//	 TableroFrutas tablero;
 		 ArrayList<ImagenFruta> botones = new ArrayList<ImagenFruta>();
 	//	 VistaCarta carta1 = new VistaCarta(1, "/imagenes/card.jpg");
 	//	 carta1.addActionListener(this);
@@ -70,12 +74,27 @@ public class Ventana extends JFrame implements ActionListener
 		 botones.add(carta2);
 		 tablero = new TableroFrutas(botones);
 		 this.getContentPane().add(tablero);
+	 }*/
+	 
+	 public void agregarTablero2(ArrayList<ImagenFruta> listaImagenFruta) {
+		 tablero = new TableroFrutas(listaImagenFruta);
+		 //tablero.setVisible(true);
+		 this.getContentPane().add(tablero);
+	 }
+	 
+	 public void modificarTablero2(ArrayList<ImagenFruta> listaImagenFruta) {
+		 this.getContentPane().remove(tablero);
+		 asignarListenersFrutas(listaImagenFruta);
+		 tablero = new TableroFrutas(listaImagenFruta);
+		 tablero.setVisible(true);
+		 this.getContentPane().add(tablero);
 	 }
 	 
 	 private void setBaseLayout() {
-		GridLayout layout = new GridLayout(3,0);
-		layout.setHgap(5);
-		layout.setVgap(5);
+		GridLayout layout = new GridLayout(3,0,0,0);
+		// JPanel layout = new JPanel();
+	/*	layout.setHgap(0);
+		layout.setVgap(0);*/
 		getContentPane().setLayout(layout);
 		VistaMenu menuBar= new VistaMenu();
 		
@@ -109,6 +128,29 @@ public class Ventana extends JFrame implements ActionListener
 
 		 
 			 
+	 }
+	 
+	 private void asignarListenersFrutas(ArrayList<ImagenFruta> listaImagenFruta){
+		 
+		 for(ImagenFruta boton : listaImagenFruta){
+			 boton.addActionListener(new ActionListener(){
+				 public void actionPerformed(ActionEvent e) {
+					 System.out.println("color "+boton.getColor());
+					 if(controller.adivinarColor(boton.getColor())){//si es el color ganador
+							int dialogButton = JOptionPane.YES_NO_OPTION;
+							int dialogResult =  JOptionPane.showConfirmDialog (null, "GANASTE!!! Queres jugar el proximo nivel?","Frutas de Colores", dialogButton);
+							controller.nuevoNivel(dialogResult);		
+					 }
+					 else{//si es el color perdedor
+							int dialogButton = JOptionPane.YES_NO_OPTION;
+							int dialogResult =  JOptionPane.showConfirmDialog (null, "Perdiste!!! Volver a intentarlo?","Frutas de Colores", dialogButton);
+							controller.nuevoNivel(dialogResult);		
+					 }
+				  }});
+		 }
+		 
+		 
+		 
 	 }
 
 	@Override

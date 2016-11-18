@@ -13,7 +13,7 @@ public class VistaPregunta extends JPanel{
 	
 	public VistaPregunta() {
 		this.pregunta = new JLabel();
-		this.pregunta.setText("Estoy funcioanando");
+		this.pregunta.setText("Aprieta juego nuevo para comenzar a jugar");
 	}
 	
 	public void setPregunta(String pregunta) {

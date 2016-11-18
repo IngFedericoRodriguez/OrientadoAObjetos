@@ -10,11 +10,15 @@ public class JuegoColores {
 
 	private ArrayList<Fruta> frutas; // arraylist de  clases Fruta. un array  listas enlasazadas de punteros a cada Fruta
 	private Fruta frutaGanadora;
+	private int nivel;
+	private int puntos;
+	private int intentos;
+	private int adivinadas;
 	
 	public JuegoColores(){
 		generarFrutas(); //es como pegar el codigoaca dento
 		frutaGanadora();
-		FrutasNoGanadoras();
+		frutasNoGanadoras();
 		
 	}
 	
@@ -47,6 +51,10 @@ public class JuegoColores {
 		frutaGanadora = frutas.get(randomGenerator.nextInt(frutas.size())); //tomo un elemento random del arraylist	
 	}
 	
+	public Fruta getFrutaGanadora(){
+		return frutaGanadora; //tomo un elemento random del arraylist	
+	}
+	
 	public String getColorGanador(){
 		return frutaGanadora.getColor();
 		
@@ -62,13 +70,13 @@ public class JuegoColores {
 			return null;
 	}
 	
-	public ArrayList<Fruta> FrutasNoGanadoras(){
+	public ArrayList<Fruta> frutasNoGanadoras(){
 		ArrayList<Fruta> frutasLocal = new ArrayList<Fruta>();
 		int i=0;
 		for(int x=0;x<frutas.size();x++) {
 			if(!frutas.get(x).getColor().equals(frutaGanadora.getColor()))//si la fruta tiene color diferente al ganador
 			{	frutasLocal.add(frutas.get(x));
-				System.out.println(frutasLocal.get(i).getColor());	
+				//System.out.println(frutasLocal.get(i).getColor());	
 				i++;
 			
 			}
@@ -88,6 +96,34 @@ public class JuegoColores {
 	public void init() {
 		// TODO Auto-generated method stub
 		frutaGanadora();
-		FrutasNoGanadoras();
+		frutasNoGanadoras();
+	}
+	
+	public boolean nivelGanado() {
+		return adivinadas == nivel+1;
+	}
+	
+	public int getIntentos() {
+		return intentos;
+	}
+	
+	public int getAdivinadas() {
+		return adivinadas;
+	}
+	
+	private void incrementarPuntos() {
+		puntos += 10;
+	}
+	
+	public int getPuntos() {
+		return this.puntos;
+	}
+	
+	public int getLevel() {
+		return nivel;
+	}
+	
+	public void setLevel(int nivel) {
+		this.nivel = nivel;
 	}
 }
