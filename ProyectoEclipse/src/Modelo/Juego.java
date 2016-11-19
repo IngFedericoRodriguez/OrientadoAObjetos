@@ -3,8 +3,6 @@ package Modelo;
 
 import java.util.Collections;
 
-import usuario.Usuario;
-
 
 abstract public class Juego {
 	private Usuario usuario;

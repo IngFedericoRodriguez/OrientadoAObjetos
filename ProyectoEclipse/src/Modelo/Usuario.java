@@ -1,6 +1,8 @@
-package usuario;
+package Modelo;
 
 import java.util.ArrayList;
+
+import usuario.Score;
 
 public class Usuario  {
 

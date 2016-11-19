@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import CartasIguales.ControladorJuego;
 import CartasIguales.JuegoCartas;
+import Modelo.Usuario;
 import Vista.VistaCrearUsuario;
 import Vista.VistaJuego;
 import Vista.VistaListarUsuarios;

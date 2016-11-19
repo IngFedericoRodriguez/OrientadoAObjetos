@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
-import usuario.Usuario;
+import Modelo.Usuario;
 
 public class ControladorJuego {
 	private JuegoCartas juegoCartas;

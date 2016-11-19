@@ -3,8 +3,8 @@ package CartasIguales;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import usuario.Usuario;
 import Modelo.Juego;
+import Modelo.Usuario;
 
 public class JuegoCartas extends Juego {
 	private ArrayList<Carta> cartas;

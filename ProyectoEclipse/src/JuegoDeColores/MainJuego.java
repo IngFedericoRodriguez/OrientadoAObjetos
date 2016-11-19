@@ -10,7 +10,7 @@ import javax.swing.Timer;
 import CartasIguales.JuegoCartas;
 import CartasIguales.VentanaJuego;
 import JuegoDeColores.JuegoColores;
-import usuario.Usuario;
+import Modelo.Usuario;
 
 public class MainJuego {
 	private JuegoColores juegoColores;
