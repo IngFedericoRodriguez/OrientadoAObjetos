@@ -7,7 +7,7 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
-import CartasIguales.Juego;
+import CartasIguales.JuegoCartas;
 import CartasIguales.VentanaJuego;
 import JuegoDeColores.JuegoColores;
 import usuario.Usuario;

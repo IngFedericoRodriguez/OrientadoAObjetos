@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 // MODELO
-public class Juego {
+public class JuegoCartas {
 	private int level;
 	private int intentos;
 	private int adivinadas;
@@ -13,14 +13,14 @@ public class Juego {
 	private ArrayList<Carta> cartasDelNivel;
 	
 	//Sobrecarga
-	public Juego(int level) {
+	public JuegoCartas(int level) {
 		this.level = level;
 		puntos = 0;
 		cartas = new ArrayList<Carta>();
 		reset();
 	}
 	
-	public Juego() {
+	public JuegoCartas() {
 		level = 1;
 		cartas = new ArrayList<Carta>();
 		reset();

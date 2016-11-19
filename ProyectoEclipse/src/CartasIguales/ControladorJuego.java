@@ -9,20 +9,20 @@ import javax.swing.Timer;
 import usuario.Usuario;
 
 public class ControladorJuego {
-	private Juego juego;
+	private JuegoCartas juegoCartas;
 	private VentanaJuego ventana;
 	private Usuario usuario;
 	
-	public ControladorJuego(Juego juego, Usuario usuario) {
-		this.juego = juego;
+	public ControladorJuego(JuegoCartas juegoCartas, Usuario usuario) {
+		this.juegoCartas = juegoCartas;
 		this.usuario = usuario;
-		juego.setLevel(usuario.getScore("CartasIguales").getNivel());
+		juegoCartas.setLevel(usuario.getScore("CartasIguales").getNivel());
 		ventana = new VentanaJuego();
 	}
 	
 	public void jugar() {
-		juego.init();
-	 	ventana.agregarTablero(generarVistaCartas(juego.getCartas()));
+		juegoCartas.init();
+	 	ventana.agregarTablero(generarVistaCartas(juegoCartas.getCartas()));
 	 	ventana.agregarMarcador();
 		// Hacer todos estos elementos de UI injectables
 		// TODO : Crear un UI builder. Abstraer el controlador para los dos juegos.
@@ -52,32 +52,32 @@ public class ControladorJuego {
 	}
 	
 	public int getAdivinadas() {
-		return juego.getAdivinadas();
+		return juegoCartas.getAdivinadas();
 	}
 	
 	public int getIntentos() {
-		return juego.getIntentos();
+		return juegoCartas.getIntentos();
 	}
 	
 	public int getPuntos() {
-		return juego.getPuntos();
+		return juegoCartas.getPuntos();
 	}
 	
 	private void crearNuevoNivel() {
-		juego.nuevoLevel();
-		juego.reset();
+		juegoCartas.nuevoLevel();
+		juegoCartas.reset();
 		ventana.getContentPane().removeAll();
 		jugar();
 	}
 	
 	public boolean match(int id1, int id2) {
-		return juego.match(id1, id2);
+		return juegoCartas.match(id1, id2);
 	}
 	
 	public boolean nivelGanado() {
-		if(juego.nivelGanado()) {
-			usuario.getScore("CartasIguales").agregarPuntos(juego.getPuntos());
-			usuario.getScore("CartasIguales").setNivel(juego.getLevel()+1);
+		if(juegoCartas.nivelGanado()) {
+			usuario.getScore("CartasIguales").agregarPuntos(juegoCartas.getPuntos());
+			usuario.getScore("CartasIguales").setNivel(juegoCartas.getLevel()+1);
 			return true;
 		} 
 		return false;

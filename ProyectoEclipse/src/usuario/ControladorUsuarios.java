@@ -7,13 +7,11 @@ import java.util.Hashtable;
 import javax.swing.JFrame;
 
 import CartasIguales.ControladorJuego;
-import CartasIguales.Juego;
+import CartasIguales.JuegoCartas;
 import Vista.VistaCrearUsuario;
 import Vista.VistaJuego;
 import Vista.VistaListarUsuarios;
 import Vista.VistaLogin;
-
-// Main modelo controlador.-
 
 public class ControladorUsuarios {
 	
@@ -87,7 +85,7 @@ public class ControladorUsuarios {
 		} else {
 			// tirar warning no usuario logueado.
 		}
-		cartasIguales = new ControladorJuego(new Juego(), usuario);
+		cartasIguales = new ControladorJuego(new JuegoCartas(), usuario);
 		cartasIguales.jugar();
 	}
 	
@@ -95,7 +93,7 @@ public class ControladorUsuarios {
 		this.usuarioLogueado = false;
 	}
 	
-	private boolean emailEnUso(String email) {
+	private boolean emailEnUso (String email) {
 		boolean enUso = false;
 		int i = 0;
 		while (!enUso || i< usuarios.size()) {
