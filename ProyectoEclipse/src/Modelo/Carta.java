@@ -1,4 +1,4 @@
-package CartasIguales;
+package Modelo;
 
 public class Carta {
 	private int id;

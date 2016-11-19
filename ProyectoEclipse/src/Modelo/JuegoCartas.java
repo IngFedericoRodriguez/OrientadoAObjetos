@@ -3,8 +3,6 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import CartasIguales.Carta;
-
 public class JuegoCartas extends Juego {
 	private ArrayList<Carta> cartas;
 	private ArrayList<Carta> cartasDelNivel;

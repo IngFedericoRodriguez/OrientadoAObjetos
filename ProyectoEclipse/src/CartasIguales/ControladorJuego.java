@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import Modelo.Carta;
 import Modelo.JuegoCartas;
 import Modelo.Usuario;
 
