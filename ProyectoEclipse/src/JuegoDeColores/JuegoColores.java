@@ -15,10 +15,10 @@ public class JuegoColores {
 	private int intentos;
 	private int adivinadas;
 	
-	public JuegoColores(){
+	public JuegoColores(int puntosAcumulados){
 		generarFrutas(); //es como pegar el codigoaca dento
 		frutaGanadora();
-		frutasNoGanadoras();
+		//frutasNoGanadoras();
 		
 	}
 	
@@ -112,7 +112,7 @@ public class JuegoColores {
 	}
 	
 	private void incrementarPuntos() {
-		puntos += 10;
+		puntos += 10/intentos;
 	}
 	
 	public int getPuntos() {
@@ -126,4 +126,5 @@ public class JuegoColores {
 	public void setLevel(int nivel) {
 		this.nivel = nivel;
 	}
+	
 }

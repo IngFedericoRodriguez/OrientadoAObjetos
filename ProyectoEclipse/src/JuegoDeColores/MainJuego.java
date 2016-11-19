@@ -15,18 +15,19 @@ import usuario.Usuario;
 public class MainJuego {
 	private JuegoColores juegoColores;
 	private Ventana ventana;
-	private int nivel=0;
+//	private int nivel=0;
 	private Usuario usuario;
 	
 	public static void main(String[] args) {
 
-		MainJuego inst = new MainJuego(new JuegoColores(),new Usuario("fede","mail"));
+		MainJuego inst = new MainJuego(new JuegoColores(100),new Usuario("fede","mail"));//hardcoded
 		inst.jugar();
 	}
 
 	public MainJuego(JuegoColores juego, Usuario usuario) {
 		this.juegoColores = juego;
 		this.usuario = usuario;
+		jugar();
 	}
 	
 
@@ -35,7 +36,7 @@ public class MainJuego {
 		ventana = new Ventana("Jueguito de frutas");
 		ventana.setController(this);
 		ventana.setVisible(true);
-		ventana.agregarTablero2(listaImagenFruta(nivel));
+		ventana.agregarTablero2(listaImagenFruta(juegoColores.getLevel()));
 	//	juegoNuevo();
 	}
 	
@@ -54,9 +55,9 @@ public class MainJuego {
 		juegoColores.init();
 		String colorGanador= juegoColores.getColorGanador();
 		ventana.modificarPregunta("Elige la fruta Color "+ colorGanador);
-		ventana.modificarTablero2(listaImagenFruta(nivel));
+		ventana.modificarTablero2(listaImagenFruta(juegoColores.getLevel()));
 	}
-	
+
 	private ArrayList<ImagenFruta> listaImagenFruta(int nivel){
 		ArrayList<ImagenFruta> listaImagenFruta = new ArrayList<ImagenFruta>();
 		for(int i=1;i<nivel+5;i++){
