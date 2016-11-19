@@ -1,4 +1,4 @@
-package CartasIguales;
+package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JPanel;
+
+import CartasIguales.VistaCarta;
 
 public class Tablero extends JPanel {
 	/**
