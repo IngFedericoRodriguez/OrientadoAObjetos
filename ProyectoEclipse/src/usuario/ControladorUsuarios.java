@@ -85,7 +85,7 @@ public class ControladorUsuarios {
 		} else {
 			// tirar warning no usuario logueado.
 		}
-		cartasIguales = new ControladorJuego(new JuegoCartas(), usuario);
+		cartasIguales = new ControladorJuego(usuario);
 		cartasIguales.jugar();
 	}
 	

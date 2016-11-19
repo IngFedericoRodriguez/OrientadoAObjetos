@@ -13,15 +13,14 @@ public class ControladorJuego {
 	private VentanaJuego ventana;
 	private Usuario usuario;
 	
-	public ControladorJuego(JuegoCartas juegoCartas, Usuario usuario) {
-		this.juegoCartas = juegoCartas;
+	public ControladorJuego(Usuario usuario) {
+		this.juegoCartas = new JuegoCartas(usuario);
 		this.usuario = usuario;
-		juegoCartas.setLevel(usuario.getScore("CartasIguales").getNivel());
 		ventana = new VentanaJuego();
 	}
 	
 	public void jugar() {
-		juegoCartas.init();
+		juegoCartas.inicializar();
 	 	ventana.agregarTablero(generarVistaCartas(juegoCartas.getCartas()));
 	 	ventana.agregarMarcador();
 		// Hacer todos estos elementos de UI injectables
@@ -64,7 +63,7 @@ public class ControladorJuego {
 	}
 	
 	private void crearNuevoNivel() {
-		juegoCartas.nuevoLevel();
+		juegoCartas.nuevoNivel();
 		juegoCartas.reset();
 		ventana.getContentPane().removeAll();
 		jugar();
@@ -77,7 +76,7 @@ public class ControladorJuego {
 	public boolean nivelGanado() {
 		if(juegoCartas.nivelGanado()) {
 			usuario.getScore("CartasIguales").agregarPuntos(juegoCartas.getPuntos());
-			usuario.getScore("CartasIguales").setNivel(juegoCartas.getLevel()+1);
+			usuario.getScore("CartasIguales").setNivel(juegoCartas.getNivel()+1);
 			return true;
 		} 
 		return false;
