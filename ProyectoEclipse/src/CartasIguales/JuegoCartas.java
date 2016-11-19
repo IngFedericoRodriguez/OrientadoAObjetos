@@ -3,52 +3,22 @@ package CartasIguales;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// MODELO
-public class JuegoCartas {
-	private int level;
-	private int intentos;
-	private int adivinadas;
-	private int puntos;
+import usuario.Usuario;
+import Modelo.Juego;
+
+public class JuegoCartas extends Juego {
 	private ArrayList<Carta> cartas;
 	private ArrayList<Carta> cartasDelNivel;
 	
-	//Sobrecarga
-	public JuegoCartas(int level) {
-		this.level = level;
-		puntos = 0;
+	public JuegoCartas(Usuario usuario) {
+		super(usuario, "JuegoCartas");
 		cartas = new ArrayList<Carta>();
 		reset();
-	}
-	
-	public JuegoCartas() {
-		level = 1;
-		cartas = new ArrayList<Carta>();
-		reset();
-	}
-	
-	public void nuevoLevel() {
-		level++;
 	}
 	
 	public void reset() {
-		intentos = 0;
-		adivinadas = 0;
+		super.reset();
 		cartasDelNivel = new ArrayList<Carta>();
-	}
-	
-	public void sumarIntento() {
-		intentos++;
-	}
-	
-	public void init() {
-		crearCartas();
-		mezclarCartas();
-		crearCartasParaNivel();
-	}
-	
-	public void proximoLevel() {
-		level++;
-		init();
 	}
 	
 	public ArrayList<Carta> getCartas() {
@@ -60,30 +30,16 @@ public class JuegoCartas {
 	}
 	
 	private void repartir() {
-		int cantidadPares = level+1;
-	}
-	
-	public void setLevel(int level) {
-		this.level = level;
+		int cantidadPares = nivel+1;
 	}
 	
 	public void win() {
-		level++;
+		nivel++;
 	}
 	
-	public boolean match(int selected1, int selected2) {
-		boolean match = selected1 == selected2;
-		if(match) {
-			adivinadas++;
-			incrementarPuntos();
-		} else {
-			intentos++;
-		}
-		return match;
-	}
 	
 	public boolean nivelGanado() {
-		return adivinadas == level+1;
+		return adivinadas == nivel+1;
 	}
 	
 	private void crearCartas(){
@@ -106,7 +62,7 @@ public class JuegoCartas {
 	}
 	
 	private void crearCartasParaNivel() {
-		int cartasDiferentes = level+1;
+		int cartasDiferentes = nivel+1;
 		for (int i = 0; i < cartasDiferentes; i++ ) {
 			// tengo que crear la dupla de cartas.
 			cartasDelNivel.add(cartas.get(i));
@@ -118,24 +74,11 @@ public class JuegoCartas {
 		Collections.shuffle(cartas);
 	}
 	
-	public int getIntentos() {
-		return intentos;
-	}
-	
-	public int getAdivinadas() {
-		return adivinadas;
-	}
-	
-	private void incrementarPuntos() {
-		puntos += 10;
-	}
-	
-	public int getPuntos() {
-		return this.puntos;
-	}
-	
-	public int getLevel() {
-		return level;
+	@Override
+	public void inicializar() {
+		crearCartas();
+		mezclarCartas();
+		crearCartasParaNivel();
 	}
 
 }
