@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.swing.Timer;
 
 import JuegoDeColores.JuegoColores;
+import Modelo.Fruta;
 import Modelo.JuegoCartas;
 import Modelo.Usuario;
 import Vista.VentanaJuego;

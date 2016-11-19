@@ -3,6 +3,8 @@ package JuegoDeColores;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Modelo.Fruta;
+
 
 // es un objeto. Parte del modelo
 //reglas del juego y fichas del juego

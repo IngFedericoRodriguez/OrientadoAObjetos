@@ -1,22 +1,14 @@
-package JuegoDeColores;
+package Modelo;
 
-
-//es un objeto. Parte del Modelo.
-//clase y constructor en mayuscula.
-public class Fruta {
+public class Fruta extends Carta {
 	private int id;
 	private String imgSource;
 	private String color;
 	
-	
-	//constructor
 	public Fruta(int id,String imgSource, String color) {
-		this.id = id;
-		this.imgSource = imgSource;
+		super(id, imgSource);
 		this.color=color;
 	}
-	
-	//Getters
 	public String getImgSource() {
 		return imgSource;
 	}
