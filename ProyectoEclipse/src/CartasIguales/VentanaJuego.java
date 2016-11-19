@@ -22,6 +22,7 @@ import javax.swing.event.MenuListener;
 
 import Vista.Marcador;
 import Vista.Tablero;
+import Vista.VistaCarta;
 
 public class VentanaJuego extends JFrame implements ActionListener {
  

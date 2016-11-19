@@ -9,6 +9,7 @@ import javax.swing.Timer;
 import Modelo.Carta;
 import Modelo.JuegoCartas;
 import Modelo.Usuario;
+import Vista.VistaCarta;
 
 public class ControladorJuego {
 	private JuegoCartas juegoCartas;

@@ -8,8 +8,6 @@ import java.util.Collections;
 
 import javax.swing.JPanel;
 
-import CartasIguales.VistaCarta;
-
 public class Tablero extends JPanel {
 	/**
 	 *  TODO : Que onda con filas y columnas? parece no ser necesario.

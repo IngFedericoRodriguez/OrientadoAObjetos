@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import Vista.Marcador;
 import Vista.Tablero;
-import CartasIguales.VistaCarta;
+import Vista.VistaCarta;
 
 public class Ventana extends JFrame implements ActionListener
 {
