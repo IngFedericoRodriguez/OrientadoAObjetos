@@ -1,10 +1,9 @@
-package CartasIguales;
+package Modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import Modelo.Juego;
-import Modelo.Usuario;
+import CartasIguales.Carta;
 
 public class JuegoCartas extends Juego {
 	private ArrayList<Carta> cartas;

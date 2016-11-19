@@ -7,9 +7,9 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
-import CartasIguales.JuegoCartas;
 import CartasIguales.VentanaJuego;
 import JuegoDeColores.JuegoColores;
+import Modelo.JuegoCartas;
 import Modelo.Usuario;
 
 public class MainJuego {
