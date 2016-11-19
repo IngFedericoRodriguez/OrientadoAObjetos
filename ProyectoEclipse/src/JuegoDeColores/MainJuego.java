@@ -7,10 +7,10 @@ import java.util.Random;
 
 import javax.swing.Timer;
 
-import CartasIguales.VentanaJuego;
 import JuegoDeColores.JuegoColores;
 import Modelo.JuegoCartas;
 import Modelo.Usuario;
+import Vista.VentanaJuego;
 
 public class MainJuego {
 	private JuegoColores juegoColores;

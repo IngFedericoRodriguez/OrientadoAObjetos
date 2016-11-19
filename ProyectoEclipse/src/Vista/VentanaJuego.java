@@ -1,4 +1,4 @@
-package CartasIguales;
+package Vista;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -20,9 +20,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-import Vista.Marcador;
-import Vista.Tablero;
-import Vista.VistaCarta;
+import CartasIguales.ControladorJuego;
 
 public class VentanaJuego extends JFrame implements ActionListener {
  
