@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import CartasIguales.Marcador;
+import Vista.Marcador;
 import CartasIguales.Tablero;
 import CartasIguales.VistaCarta;
 

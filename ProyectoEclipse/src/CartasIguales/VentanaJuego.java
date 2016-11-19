@@ -20,6 +20,8 @@ import javax.swing.WindowConstants;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import Vista.Marcador;
+
 public class VentanaJuego extends JFrame implements ActionListener {
  
 	private static final long serialVersionUID = 1L;
