@@ -20,7 +20,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-import CartasIguales.ControladorJuego;
+import Controlador.ControladorJuego;
 
 public class VentanaJuego extends JFrame implements ActionListener {
  

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
-import usuario.ControladorUsuarios;
+import Controlador.ControladorUsuarios;
 
 	public class VistaLogin extends JFrame implements ActionListener {
 

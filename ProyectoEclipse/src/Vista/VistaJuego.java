@@ -7,7 +7,7 @@ import java.io.*;
 
 import javax.swing.*;
 
-import usuario.ControladorUsuarios;
+import Controlador.ControladorUsuarios;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;

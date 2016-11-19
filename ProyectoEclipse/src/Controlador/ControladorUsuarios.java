@@ -1,4 +1,4 @@
-package usuario;
+package Controlador;
 
 
 import java.util.ArrayList;
@@ -6,7 +6,6 @@ import java.util.Hashtable;
 
 import javax.swing.JFrame;
 
-import CartasIguales.ControladorJuego;
 import Modelo.JuegoCartas;
 import Modelo.Usuario;
 import Vista.VistaCrearUsuario;

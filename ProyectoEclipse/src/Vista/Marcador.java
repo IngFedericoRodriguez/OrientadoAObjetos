@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Marcador extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JLabel intentos;
 	private JLabel puntos;
 	private JLabel adivinadas;
