@@ -1,4 +1,4 @@
-package usuario;
+package Modelo;
 
 public class Score {
 	private int nivel;

@@ -2,8 +2,6 @@ package Modelo;
 
 import java.util.ArrayList;
 
-import usuario.Score;
-
 public class Usuario  {
 
 	private String nombre;
