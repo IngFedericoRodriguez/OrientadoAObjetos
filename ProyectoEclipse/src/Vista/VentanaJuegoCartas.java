@@ -67,6 +67,12 @@ public class VentanaJuegoCartas extends VentanaJuego{
 		}
     }
 	
+	public void setVisible(boolean aflag) {
+		tablero.setVisible(aflag);
+		marcador.setVisible(aflag);
+		super.setVisible(aflag);
+	}
+	
 	public void wait(int n){
         long t0, t1;
         t0 =  System.currentTimeMillis();

@@ -60,8 +60,6 @@ abstract public class VentanaJuego extends JFrame implements ActionListener {
 	}
 	
 	public void setVisible(boolean flag) {
-		tablero.setVisible(flag);
-		marcador.setVisible(flag);
 		pack();
 		super.setVisible(flag);
 	}
