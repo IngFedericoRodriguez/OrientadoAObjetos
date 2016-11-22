@@ -8,21 +8,22 @@ import java.util.Collections;
 
 import javax.swing.JPanel;
 
-public class Tablero extends JPanel {
-	/**
-	 *  TODO : Que onda con filas y columnas? parece no ser necesario.
-	 */
+abstract public class Tablero extends JPanel {
+
 	private static final long serialVersionUID = 1L;
-	private int filas;
-	private int columnas;
+	protected int filas;
+	protected int columnas;
 	private GridLayout layout;
-	private ArrayList<VistaCarta> vistas;
+	protected ArrayList<VistaCarta> vistas;
 	
 	
-	public Tablero(ArrayList<VistaCarta> vistaCartas) {
-		vistas = vistaCartas;
+	public Tablero() {
 		// hardcoded dimension. Hay que meter un config file o algo asi.
 		setPreferredSize(new Dimension(750, 600));
+	}
+	
+	public void setVistaCartas(ArrayList<VistaCarta> vistaCartas) {
+		vistas = vistaCartas;
 	}
 	
 	private void setearGaps() {
@@ -49,20 +50,10 @@ public class Tablero extends JPanel {
 	}
 	
 	private void nuevoLayout() {
-		int elementosTotales = vistas.size();
-		int filas = 2;
-		int columnas = elementosTotales%3 == 0 ? elementosTotales/3 : elementosTotales/2;
-		boolean encontrado = false;
-		while (!encontrado && filas < elementosTotales) {
-			if(filas * columnas == elementosTotales) {
-				encontrado = true;
-			} else {
-				filas++;
-			} 
-		}
-		this.filas = filas;
-		this.columnas = columnas;
+		crearFilasYColumnas();
 		crearLayout();
 		agregarCartas();
 	}
+	
+	abstract void crearFilasYColumnas();
 }

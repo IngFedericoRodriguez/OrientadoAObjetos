@@ -11,6 +11,7 @@ import Modelo.JuegoCartas;
 import Modelo.Usuario;
 import Vista.VentanaJuego;
 import Vista.VistaCarta;
+import Vista.tableroJuegoCartas;
 
 public class ControladorJuego {
 	private JuegoCartas juegoCartas;
@@ -20,15 +21,13 @@ public class ControladorJuego {
 	public ControladorJuego(Usuario usuario) {
 		this.juegoCartas = new JuegoCartas(usuario);
 		this.usuario = usuario;
-		ventana = new VentanaJuego();
+		ventana = new VentanaJuego(new tableroJuegoCartas());
 	}
 	
 	public void jugar() {
 		juegoCartas.inicializar();
 	 	ventana.agregarTablero(generarVistaCartas(juegoCartas.getCartas()));
 	 	ventana.agregarMarcador();
-		// Hacer todos estos elementos de UI injectables
-		// TODO : Crear un UI builder. Abstraer el controlador para los dos juegos.
 		ventana.setControladorJuego(this);
 		ventana.setVisible(true);
 	}
@@ -69,7 +68,7 @@ public class ControladorJuego {
 	private void crearNuevoNivel() {
 		juegoCartas.nuevoNivel();
 		juegoCartas.reset();
-		ventana.getContentPane().removeAll();
+		ventana.reset();
 		jugar();
 	}
 	

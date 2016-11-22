@@ -35,8 +35,9 @@ public class VentanaJuego extends JFrame implements ActionListener {
 
 
 	
-	public VentanaJuego() {
+	public VentanaJuego(Tablero tablero) {
 		super("PokeMemoria");
+		this.tablero = tablero;
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBaseLayout();
@@ -54,8 +55,14 @@ public class VentanaJuego extends JFrame implements ActionListener {
 		getContentPane().setLayout(layout);
 	}
 	
+	public void reset() {
+		tablero.removeAll();
+		marcador.removeAll();
+		getContentPane().removeAll();
+	}
+	
 	public void agregarMarcador() {
-		marcador = new Marcador();;
+		marcador = new Marcador();
 		this.getContentPane().add(marcador, BorderLayout.SOUTH);
 	}
 	
@@ -63,7 +70,7 @@ public class VentanaJuego extends JFrame implements ActionListener {
 		for(VistaCarta vistaCarta : vistaCartas) {
 			vistaCarta.addActionListener(this);
 		}
-		tablero = new Tablero(vistaCartas);
+		tablero.setVistaCartas(vistaCartas);
 		this.getContentPane().add(tablero, BorderLayout.CENTER);
 	}
 	
