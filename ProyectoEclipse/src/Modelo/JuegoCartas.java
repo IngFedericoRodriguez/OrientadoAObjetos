@@ -1,3 +1,4 @@
+
 package Modelo;
 
 import java.util.ArrayList;
@@ -74,5 +75,12 @@ public class JuegoCartas extends Juego {
 		mezclarCartas();
 		crearCartasParaNivel();
 	}
+
+	@Override
+	public String getExtraInfoNivel() {
+		return null;
+	}
+
+
 
 }

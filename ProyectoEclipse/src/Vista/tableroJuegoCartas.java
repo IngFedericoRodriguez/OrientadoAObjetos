@@ -6,6 +6,11 @@ public class tableroJuegoCartas extends Tablero {
 
 	private static final long serialVersionUID = 1L;
 
+	public tableroJuegoCartas() {
+		super();
+		usesFliplableCards = true;
+	}
+	
 	@Override
 	void crearFilasYColumnas() {
 		int elementosTotales = this.vistas.size();

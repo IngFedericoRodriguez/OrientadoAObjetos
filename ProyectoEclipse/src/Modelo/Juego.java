@@ -22,6 +22,7 @@ abstract public class Juego {
 	
 	public abstract void inicializar();
 	public abstract boolean nivelGanado();
+	public abstract String getExtraInfoNivel();
 
 	public ArrayList<Carta> getCartas() {
 		return cartasDelNivel;
@@ -59,7 +60,7 @@ abstract public class Juego {
 		return adivinadas;
 	}
 	
-	private void incrementarPuntos() {
+	protected void incrementarPuntos() {
 		puntos += 10;
 	}
 	

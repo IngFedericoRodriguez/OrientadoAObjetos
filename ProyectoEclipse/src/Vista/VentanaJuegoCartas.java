@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.Timer;
 
-public class VentanaJuegoCartas extends VentanaJuego{
+public class VentanaJuegoCartas extends VentanaJuego {
 	private static final long serialVersionUID = 1L;
 	private VistaCarta carta1;
 	private VistaCarta carta2;
@@ -27,7 +27,7 @@ public class VentanaJuegoCartas extends VentanaJuego{
 	public void reset() {
 		this.tablero.removeAll();
 		this.marcador.removeAll();
-		getContentPane().removeAll();
+		this.getContentPane().removeAll();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -70,6 +70,8 @@ public class VentanaJuegoCartas extends VentanaJuego{
 	public void setVisible(boolean aflag) {
 		tablero.setVisible(aflag);
 		marcador.setVisible(aflag);
+		updateSocre();
+		pack();
 		super.setVisible(aflag);
 	}
 	

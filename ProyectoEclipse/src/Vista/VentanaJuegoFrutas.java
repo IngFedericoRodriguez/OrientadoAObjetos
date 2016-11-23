@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
@@ -13,14 +14,15 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 	
 	public VentanaJuegoFrutas(Tablero tablero) {
 		super(tablero);
-		agregarVistaPregunta();
 	}
 	
 	public void setVisible(boolean aflag) {
-		vistaPregunta.setPregunta("pepe");
+		agregarVistaPregunta();
+		vistaPregunta.setPregunta(this.controladorJuego.getLevelExtraInfo());
 		tablero.setVisible(aflag);
 		vistaPregunta.setVisible(aflag);
 		marcador.setVisible(aflag);
+		updateSocre();
 		super.setVisible(aflag);
 	}
 
@@ -34,12 +36,13 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 	}
 	
 	 private void agregarVistaPregunta() {
-		 vistaPregunta = new VistaPregunta();
-		 this.add(vistaPregunta);
+		vistaPregunta = new VistaPregunta();
+		this.getContentPane().add(vistaPregunta, BorderLayout.NORTH);
 	 }
 
 	@Override
 	public void reset() {
+		this.vistaPregunta.removeAll();
 		this.tablero.removeAll();
 		this.marcador.removeAll();
 		getContentPane().removeAll();
@@ -47,7 +50,12 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 	
 	public void actionPerformed(ActionEvent e) {
 		VistaCarta vistaCarta = (VistaCarta) e.getSource();
-			System.out.println(vistaCarta.getId());
+			if(controladorJuego.match(vistaCarta.getId())) {
+				updateSocre();
+				controladorJuego.nuevoNivel(jugarNuevo());
+			} else {
+				updateSocre();
+			}
 	}
 
 }

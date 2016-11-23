@@ -13,12 +13,12 @@ abstract public class Tablero extends JPanel {
 	private static final long serialVersionUID = 1L;
 	protected int filas;
 	protected int columnas;
+	protected boolean usesFliplableCards;
 	private GridLayout layout;
 	protected ArrayList<VistaCarta> vistas;
 	
 	
 	public Tablero() {
-		// hardcoded dimension. Hay que meter un config file o algo asi.
 		setPreferredSize(new Dimension(750, 600));
 	}
 	
@@ -40,6 +40,7 @@ abstract public class Tablero extends JPanel {
 		Collections.shuffle(vistas);
 		for(VistaCarta vista : vistas) {
 			add(vista);
+			vista.setFlipeable(usesFliplableCards);
 			vista.setVisible(true);		
 		}
 	}

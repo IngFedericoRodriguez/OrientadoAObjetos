@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class JuegoColores extends Juego {
@@ -39,23 +40,38 @@ public class JuegoColores extends Juego {
 	
 	private void frutaGanadora() {
 		cartasDelNivel = new ArrayList<Carta>();
-		Random randomGenerator= new Random();
-		frutaGanadora = (Carta) cartas.get(randomGenerator.nextInt(cartas.size()));
+		Collections.shuffle(cartas);
+		frutaGanadora = cartas.get(0);
 		cartasDelNivel.add(frutaGanadora);
 	}
 	
 	public boolean match(int selected) {
-		return frutaGanadora.getId() == selected;
+		if(frutaGanadora.getId() == selected) {
+			adivinadas++;
+			incrementarPuntos();
+			return true;
+		} else {
+			intentos++;
+			return false;
+		}
 	}
 	 
 	private void generarFrutasDelNivel() {
 		int x=0;
-		while(x<3) {
-			if(cartas.get(x).getId() != frutaGanadora.getId()){
-				cartasDelNivel.add(cartas.get(x));
+		int y = 0;
+		while(x<2 && y < cartas.size()) {
+			if(cartas.get(y).getId() != frutaGanadora.getId()){
+				cartasDelNivel.add(cartas.get(y));
 				x++;
+				y++;
+			} else {
+				y++;
 			}
 		}
+	}
+	@Override
+	public String getExtraInfoNivel() {
+		return frutaGanadora.getTexto();
 	}
 	
 }

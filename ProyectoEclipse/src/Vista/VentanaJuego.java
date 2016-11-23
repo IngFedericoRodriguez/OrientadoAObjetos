@@ -33,7 +33,7 @@ abstract public class VentanaJuego extends JFrame implements ActionListener {
 
 	public VentanaJuego(Tablero tablero) {
 		this.tablero = tablero;
-		this.setSize(800, 600);
+		this.setSize(600, 600);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBaseLayout();
 	}
@@ -59,12 +59,7 @@ abstract public class VentanaJuego extends JFrame implements ActionListener {
 		this.getContentPane().add(tablero, BorderLayout.CENTER);
 	}
 	
-	public void setVisible(boolean flag) {
-		pack();
-		super.setVisible(flag);
-	}
 
-	
 	protected void updateSocre() {
 		marcador.updatePuntos(Integer.toString(controladorJuego.getPuntos()));
 		marcador.updateAdivinadas(Integer.toString(controladorJuego.getAdivinadas()));

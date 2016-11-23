@@ -168,6 +168,10 @@ public class Controlador {
 		}
 		return vistaCartas;
 	}
+	
+	public String getLevelExtraInfo() {
+		return juego.getExtraInfoNivel();
+	}
 		
 	public void nuevoNivel(int continuar){
 		switch (continuar) {
