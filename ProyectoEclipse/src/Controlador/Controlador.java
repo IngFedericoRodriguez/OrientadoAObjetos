@@ -138,7 +138,7 @@ public class Controlador {
 	        rows[i][0] = usuarios.get(i).getNombre();
 	        rows[i][1] = usuarios.get(i).getEmail();
 	        rows[i][2] = usuarios.get(i).getPuntuacion("CartasIguales");
-	        rows[i][3] = usuarios.get(i).getPuntuacion("JuegoColores");
+	        rows[i][3] = usuarios.get(i).getPuntuacion("JuegoFrutas");
 	    }
 		vistaListarUsuarios = new VistaListarUsuarios(rows);
 		vistaListarUsuarios.setVisible(true);

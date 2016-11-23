@@ -50,6 +50,7 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 		VistaCarta vistaCarta = (VistaCarta) e.getSource();
 			if(controladorJuego.match(vistaCarta.getId())) {
 				updateSocre();
+				controladorJuego.nivelGanado("JuegoFrutas");
 				controladorJuego.nuevoNivel(jugarNuevo());
 			} else {
 				updateSocre();
