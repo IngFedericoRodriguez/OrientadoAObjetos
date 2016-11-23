@@ -28,7 +28,6 @@ public class Controlador {
 	private Usuario usuario;
 	private boolean usuarioLogueado;
 	private VistaJuego ventana;
-	private ControladorJuego cartasIguales;
 	private VistaCrearUsuario vistaCrearUsuario;
 	private VistaLogin vistaLogin;
 	private VistaListarUsuarios vistaListarUsuarios;
@@ -54,14 +53,7 @@ public class Controlador {
 		}
 	}
 	
-	public void listarUsuarios() {
-		if (!usuarios.isEmpty()) {
-			for(int i=0; i < usuarios.size(); i++) {
-				// esto deberia crear una vista y pasarsela al frame ppal.
-			}
-		}
-	}
-	
+
 	private void closeWindow(JFrame frame) {
 		frame.setVisible(false);
 		frame.dispose();

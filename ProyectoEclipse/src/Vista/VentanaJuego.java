@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Controlador.Controlador;
-import Controlador.ControladorJuego;
 
 abstract public class VentanaJuego extends JFrame implements ActionListener {
  
