@@ -20,6 +20,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import Controlador.Controlador;
 import Controlador.ControladorJuego;
 
 abstract public class VentanaJuego extends JFrame implements ActionListener {
@@ -27,18 +28,17 @@ abstract public class VentanaJuego extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	protected Marcador marcador;
 	protected Tablero tablero;
-	protected ControladorJuego controladorJuego;
+	protected Controlador controladorJuego;
 
 
 	public VentanaJuego(Tablero tablero) {
-		super("PokeMemoria");
 		this.tablero = tablero;
 		this.setSize(800, 600);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBaseLayout();
 	}
 	
-	public void setControladorJuego(ControladorJuego controladorJuego) {
+	public void setControladorJuego(Controlador controladorJuego) {
 		this.controladorJuego = controladorJuego;
 	}
 	
@@ -70,8 +70,7 @@ abstract public class VentanaJuego extends JFrame implements ActionListener {
 		marcador.updateAdivinadas(Integer.toString(controladorJuego.getAdivinadas()));
 		marcador.updateIntentos(Integer.toString(controladorJuego.getIntentos()));
 	}
-	
-	
+		
 	public int jugarNuevo() {
 		int dialogButton = JOptionPane.YES_NO_OPTION;
 		int dialogResult =  JOptionPane.showConfirmDialog (null, "Queres jugar el proximo nivel?","PokeCards", dialogButton);

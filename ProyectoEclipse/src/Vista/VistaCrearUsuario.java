@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
-import Controlador.ControladorUsuarios;
+import Controlador.Controlador;
 
 public class VistaCrearUsuario extends JFrame implements ActionListener{
 
@@ -23,12 +23,12 @@ public class VistaCrearUsuario extends JFrame implements ActionListener{
 	private JTextField txtNombre;
 	private JTextField txtEmail;
 	private JButton crearUsuario;
-	private ControladorUsuarios controlador;
+	private Controlador controlador;
 
 	/**
 	 * Launch the application.
 	 */
-	public VistaCrearUsuario(ControladorUsuarios controlador) {
+	public VistaCrearUsuario(Controlador controlador) {
 		crearUsuario = new JButton("Grabar usuario");
 		crearUsuario.addActionListener(this);
 		this.controlador = controlador;

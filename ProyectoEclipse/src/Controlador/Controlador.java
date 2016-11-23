@@ -6,14 +6,23 @@ import java.util.Hashtable;
 
 import javax.swing.JFrame;
 
+import Modelo.Carta;
+import Modelo.Juego;
 import Modelo.JuegoCartas;
+import Modelo.JuegoColores;
 import Modelo.Usuario;
+import Vista.TableroJuegoColores;
+import Vista.VentanaJuego;
+import Vista.VentanaJuegoCartas;
+import Vista.VentanaJuegoFrutas;
+import Vista.VistaCarta;
 import Vista.VistaCrearUsuario;
 import Vista.VistaJuego;
 import Vista.VistaListarUsuarios;
 import Vista.VistaLogin;
+import Vista.tableroJuegoCartas;
 
-public class ControladorUsuarios {
+public class Controlador {
 	
 	private ArrayList<Usuario> usuarios;
 	private Usuario usuario;
@@ -23,8 +32,11 @@ public class ControladorUsuarios {
 	private VistaCrearUsuario vistaCrearUsuario;
 	private VistaLogin vistaLogin;
 	private VistaListarUsuarios vistaListarUsuarios;
+	private Juego juego;
+	private VentanaJuego VentanaJuego;
 
-	public ControladorUsuarios() {
+
+	public Controlador() {
 		usuarios = new ArrayList<Usuario>();
 		usuarioLogueado = false;
 	}
@@ -79,14 +91,19 @@ public class ControladorUsuarios {
 	}
 	
 	public void jugarCartasIguales() {
-		// TODO: Dejar jugar Si hay usuario logueado.
 		if (usuarioLogueado) {
-			//jugar
-		} else {
-			// tirar warning no usuario logueado.
+			juego = new JuegoCartas(usuario);
+			VentanaJuego = new VentanaJuegoCartas(new tableroJuegoCartas());
+			jugar();
 		}
-		cartasIguales = new ControladorJuego(usuario);
-		cartasIguales.jugar();
+	}
+	
+	public void jugarJuegoColores() {
+		if (usuarioLogueado) {
+			juego = new JuegoColores(usuario);
+			VentanaJuego = new VentanaJuegoFrutas(new TableroJuegoColores());
+			jugar();
+		}
 	}
 	
 	public void desloguearUsuario() {
@@ -134,10 +151,75 @@ public class ControladorUsuarios {
 		vistaListarUsuarios = new VistaListarUsuarios(rows);
 		vistaListarUsuarios.setVisible(true);
 	}
-
-	public static void main(String[] args) {
-		ControladorUsuarios inst = new ControladorUsuarios();
-		inst.crearVista();
+	
+	private void jugar() {
+		juego.inicializar();
+		VentanaJuego.agregarTablero(generarVistaCartas(juego.getCartas()));
+		VentanaJuego.agregarMarcador();
+		VentanaJuego.setControladorJuego(this);
+		VentanaJuego.setVisible(true);
 	}
 	
+	private ArrayList<VistaCarta> generarVistaCartas(ArrayList<Carta> cartas) {
+		ArrayList<VistaCarta> vistaCartas = new ArrayList<VistaCarta>();
+		for(Carta carta : cartas) {
+			VistaCarta vistaCarta = new VistaCarta(carta.getId(), carta.imgSource(), true);
+			vistaCartas.add(vistaCarta);
+		}
+		return vistaCartas;
+	}
+		
+	public void nuevoNivel(int continuar){
+		switch (continuar) {
+			case 0 :
+				crearNuevoNivel();
+				break;
+			case 1 :
+				VentanaJuego.setVisible(false);
+				VentanaJuego.dispose();
+				break;
+		}
+	}
+	
+	public int getAdivinadas() {
+		return juego.getAdivinadas();
+	}
+	
+	public int getIntentos() {
+		return juego.getIntentos();
+	}
+	
+	public int getPuntos() {
+		return juego.getPuntos();
+	}
+	
+	private void crearNuevoNivel() {
+		juego.nuevoNivel();
+		juego.reset();
+		VentanaJuego.reset();
+		jugar();
+	}
+	
+	public boolean match(int id1, int id2) {
+		return juego.match(id1, id2);
+	}
+	
+	public boolean match(int id1) {
+		return juego.match(id1);
+	}
+	
+	
+	public boolean nivelGanado() {
+		if(juego.nivelGanado()) {
+			usuario.getScore("CartasIguales").agregarPuntos(juego.getPuntos());
+			usuario.getScore("CartasIguales").setNivel(juego.getNivel()+1);
+			return true;
+		} 
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		Controlador inst = new Controlador();
+		inst.crearVista();
+	}
 }

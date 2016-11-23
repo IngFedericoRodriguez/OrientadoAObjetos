@@ -19,14 +19,16 @@ public class VistaCarta extends JButton {
 	private String frente;
 	private boolean locked;
 	private boolean flipped;
+	private boolean flipeable;
 	private static final String tapa = "/imagenes/card.jpg";
 	
-	public VistaCarta(int id, String frente) {
+	public VistaCarta(int id, String frente, boolean flipeable) {
 		this.id = id;
 		this.frente = frente;
 		locked = false;
 		flipped = false;
-		setImagen(tapa);
+		this.flipeable = flipeable;
+		setImagen(flipeable ? tapa : frente);
 		setPreferredSize(new Dimension(200, 200));
 		setBorder(BorderFactory.createEmptyBorder());
 		setContentAreaFilled(false);
@@ -39,7 +41,7 @@ public class VistaCarta extends JButton {
 	
 	
 	public void flip() {
-		if(!locked) {
+		if(!locked && flipeable) {
 			if(!flipped) {
 				setImagen(frente);
 				flipped = true;

@@ -52,10 +52,7 @@ public class Ventana extends JFrame implements ActionListener
 		 this.add(marcador);
 	 }
 	 
-	 private void agregarPregunta() {
-		 vistaPregunta = new VistaPregunta();
-		 this.add(vistaPregunta);
-	 }
+
 	 
 	 public void modificarPregunta(String pregunta){
 		 this.vistaPregunta.setPregunta(pregunta);

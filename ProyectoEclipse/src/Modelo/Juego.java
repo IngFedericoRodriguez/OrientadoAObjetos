@@ -1,11 +1,13 @@
 package Modelo;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 
 abstract public class Juego {
 	private Usuario usuario;
+	protected ArrayList<Carta> cartasDelNivel;
 	protected int nivel;
 	protected int intentos;
 	protected int adivinadas;
@@ -21,6 +23,9 @@ abstract public class Juego {
 	public abstract void inicializar();
 	public abstract boolean nivelGanado();
 
+	public ArrayList<Carta> getCartas() {
+		return cartasDelNivel;
+	}
 	
 	// Esto esta raro porque proximo nivel hace lo mismo./
 	public void nuevoNivel() {
@@ -76,4 +81,9 @@ abstract public class Juego {
 		}
 		return match;
 	}
+	
+	public boolean match(int selected) {
+		return false;
+	}
+	
 }

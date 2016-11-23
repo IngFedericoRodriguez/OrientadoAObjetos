@@ -15,19 +15,19 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
-import Controlador.ControladorUsuarios;
+import Controlador.Controlador;
 
 	public class VistaLogin extends JFrame implements ActionListener {
 
 		private JPanel contentPane;
 		private JTextField txtEmail;
 		private JButton btnLogin;
-		private ControladorUsuarios controlador;
+		private Controlador controlador;
 
 		/**
 		 * Launch the application.
 		 */
-		public VistaLogin(ControladorUsuarios controlador) {
+		public VistaLogin(Controlador controlador) {
 			btnLogin = new JButton("Login");
 			btnLogin.addActionListener(this);
 			this.controlador = controlador;

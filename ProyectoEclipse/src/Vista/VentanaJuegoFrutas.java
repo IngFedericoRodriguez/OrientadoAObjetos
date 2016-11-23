@@ -13,20 +13,15 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 	
 	public VentanaJuegoFrutas(Tablero tablero) {
 		super(tablero);
+		agregarVistaPregunta();
 	}
 	
 	public void setVisible(boolean aflag) {
+		vistaPregunta.setPregunta("pepe");
 		tablero.setVisible(aflag);
 		vistaPregunta.setVisible(aflag);
 		marcador.setVisible(aflag);
 		super.setVisible(aflag);
-	}
-
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -38,7 +33,7 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 		
 	}
 	
-	 public void agregarVistaPregunta() {
+	 private void agregarVistaPregunta() {
 		 vistaPregunta = new VistaPregunta();
 		 this.add(vistaPregunta);
 	 }
@@ -48,6 +43,11 @@ public class VentanaJuegoFrutas extends VentanaJuego {
 		this.tablero.removeAll();
 		this.marcador.removeAll();
 		getContentPane().removeAll();
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		VistaCarta vistaCarta = (VistaCarta) e.getSource();
+			System.out.println(vistaCarta.getId());
 	}
 
 }

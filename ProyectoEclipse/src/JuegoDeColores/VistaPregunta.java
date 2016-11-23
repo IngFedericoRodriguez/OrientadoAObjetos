@@ -5,19 +5,15 @@ import javax.swing.JPanel;
 
 public class VistaPregunta extends JPanel{
 	private JLabel pregunta;
+	private static String basePregunta = "Encuentra la siguiente fruta para ganar: ";
 	
-	public VistaPregunta(String pregunta) {
-		this.pregunta = new JLabel();
-		this.pregunta.setText(pregunta);
-	}
-	
+
 	public VistaPregunta() {
 		this.pregunta = new JLabel();
-		this.pregunta.setText("Aprieta juego nuevo para comenzar a jugar");
 	}
 	
 	public void setPregunta(String pregunta) {
-		this.pregunta.setText(pregunta);
+		this.pregunta.setText(basePregunta + pregunta);
 	}
 	
 	public void setVisible(boolean aFlag) {

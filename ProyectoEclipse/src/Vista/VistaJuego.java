@@ -7,7 +7,7 @@ import java.io.*;
 
 import javax.swing.*;
 
-import Controlador.ControladorUsuarios;
+import Controlador.Controlador;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -30,7 +30,8 @@ public class VistaJuego extends JFrame implements ActionListener {
 	private JButton btnlistarUsuarios;
 	private JButton btnLogin;
 	private JButton btnJugarCartasIguales;
-	private ControladorUsuarios controlador;
+	private JButton btnJugarJuegoFrutas;
+	private Controlador controlador;
 	private Box verticalBox;
 	
 	public VistaJuego() {
@@ -38,7 +39,7 @@ public class VistaJuego extends JFrame implements ActionListener {
 		crearBotones();
 	}
 	
-	public void setControlador(ControladorUsuarios controlador) {
+	public void setControlador(Controlador controlador) {
 		this.controlador = controlador;
 	}
 	
@@ -51,12 +52,16 @@ public class VistaJuego extends JFrame implements ActionListener {
 		btnLogin.addActionListener(this);
 		btnJugarCartasIguales = new JButton("Jugar Cartas Iguales");
 		btnJugarCartasIguales.addActionListener(this);
+		btnJugarJuegoFrutas = new JButton("Jugar a conocer las frutas");
+		btnJugarJuegoFrutas.addActionListener(this);
 
 	}
 	
 	public void showGames() {
 		verticalBox.add(btnJugarCartasIguales);
-		btnJugarCartasIguales.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnJugarCartasIguales.setAlignmentX(Component.CENTER_ALIGNMENT);	
+		verticalBox.add(btnJugarJuegoFrutas);
+		btnJugarJuegoFrutas.setAlignmentX(Component.CENTER_ALIGNMENT);
 		super.setVisible(true);
 	}
 
@@ -107,6 +112,9 @@ public class VistaJuego extends JFrame implements ActionListener {
 		switch (pressedButton.getText()) {
 			case "Jugar Cartas Iguales":
 				controlador.jugarCartasIguales();
+				break;
+			case "Jugar a conocer las frutas":
+				controlador.jugarJuegoColores();
 				break;
 			case "Crear Usuario": 
 				controlador.iniciarGuiCrearUsuario();

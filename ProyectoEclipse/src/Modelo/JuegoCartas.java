@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class JuegoCartas extends Juego {
 	private ArrayList<Carta> cartas;
-	private ArrayList<Carta> cartasDelNivel;
+
 	
 	public JuegoCartas(Usuario usuario) {
 		super(usuario, "JuegoCartas");
@@ -18,9 +18,6 @@ public class JuegoCartas extends Juego {
 		cartasDelNivel = new ArrayList<Carta>();
 	}
 	
-	public ArrayList<Carta> getCartas() {
-		return cartasDelNivel;
-	}
 	
 	public int getCuentaCartas() {
 		return cartasDelNivel.size();
