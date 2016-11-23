@@ -3,9 +3,7 @@ package Vista;
 
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;

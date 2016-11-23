@@ -1,6 +1,6 @@
 package Vista;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -26,11 +26,7 @@ abstract public class Tablero extends JPanel {
 		vistas = vistaCartas;
 	}
 	
-	private void setearGaps() {
-		layout.setHgap(2);
-		layout.setVgap(2);
-	}
-	
+
 	private void crearLayout() {
 		layout = new GridLayout(filas, columnas);
 		setLayout(layout);

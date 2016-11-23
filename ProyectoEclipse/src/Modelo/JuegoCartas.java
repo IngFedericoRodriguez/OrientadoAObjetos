@@ -24,9 +24,6 @@ public class JuegoCartas extends Juego {
 		return cartasDelNivel.size();
 	}
 	
-	private void repartir() {
-		int cantidadPares = nivel+1;
-	}
 	
 	public void win() {
 		nivel++;

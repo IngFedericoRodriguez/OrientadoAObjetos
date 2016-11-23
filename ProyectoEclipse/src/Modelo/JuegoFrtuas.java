@@ -2,13 +2,12 @@ package Modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-public class JuegoColores extends Juego {
+public class JuegoFrtuas extends Juego {
 	private ArrayList<Carta> cartas; 
 	private Carta frutaGanadora;
 	
-	public JuegoColores(Usuario usuario) {
+	public JuegoFrtuas(Usuario usuario) {
 		super(usuario, "Juego Colores");
 		// TODO Auto-generated constructor stub
 	}

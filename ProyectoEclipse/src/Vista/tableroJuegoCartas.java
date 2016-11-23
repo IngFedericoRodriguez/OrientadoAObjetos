@@ -1,7 +1,5 @@
 package Vista;
 
-import java.util.ArrayList;
-
 public class tableroJuegoCartas extends Tablero {
 
 	private static final long serialVersionUID = 1L;

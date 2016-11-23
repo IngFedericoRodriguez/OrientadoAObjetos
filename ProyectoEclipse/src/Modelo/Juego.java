@@ -2,7 +2,6 @@ package Modelo;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 abstract public class Juego {

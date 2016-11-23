@@ -1,7 +1,6 @@
 package Vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
@@ -12,22 +11,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
 
 import Controlador.Controlador;
 
 public class VistaCrearUsuario extends JFrame implements ActionListener{
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtEmail;
 	private JButton crearUsuario;
 	private Controlador controlador;
 
-	/**
-	 * Launch the application.
-	 */
 	public VistaCrearUsuario(Controlador controlador) {
 		crearUsuario = new JButton("Grabar usuario");
 		crearUsuario.addActionListener(this);

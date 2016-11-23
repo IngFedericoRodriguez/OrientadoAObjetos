@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import Modelo.Carta;
 import Modelo.Juego;
 import Modelo.JuegoCartas;
-import Modelo.JuegoColores;
+import Modelo.JuegoFrtuas;
 import Modelo.Usuario;
 import Vista.TableroJuegoFrutas;
 import Vista.VentanaJuego;
@@ -100,7 +100,7 @@ public class Controlador {
 	
 	public void jugarJuegoColores() {
 		if (usuarioLogueado) {
-			juego = new JuegoColores(usuario);
+			juego = new JuegoFrtuas(usuario);
 			VentanaJuego = new VentanaJuegoFrutas(new TableroJuegoFrutas());
 			jugar();
 		}
