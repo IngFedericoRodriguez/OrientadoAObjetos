@@ -205,10 +205,10 @@ public class Controlador {
 	}
 	
 	
-	public boolean nivelGanado() {
+	public boolean nivelGanado(String nombreJuego) {
 		if(juego.nivelGanado()) {
-			usuario.getScore("CartasIguales").agregarPuntos(juego.getPuntos());
-			usuario.getScore("CartasIguales").setNivel(juego.getNivel()+1);
+			usuario.getScore(nombreJuego).agregarPuntos(juego.getPuntos());
+			usuario.getScore(nombreJuego).setNivel(juego.getNivel()+1);
 			return true;
 		} 
 		return false;

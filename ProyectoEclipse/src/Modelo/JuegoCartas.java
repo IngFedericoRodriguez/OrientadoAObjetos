@@ -9,7 +9,7 @@ public class JuegoCartas extends Juego {
 
 	
 	public JuegoCartas(Usuario usuario) {
-		super(usuario, "JuegoCartas");
+		super(usuario, "CartasIguales");
 		cartas = new ArrayList<Carta>();
 		reset();
 	}

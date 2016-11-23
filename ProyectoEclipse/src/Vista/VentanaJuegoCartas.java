@@ -60,7 +60,7 @@ public class VentanaJuegoCartas extends VentanaJuego {
 				}
 				state = 0;
 				updateSocre();
-				if (controladorJuego.nivelGanado()) {
+				if (controladorJuego.nivelGanado("CartasIguales")) {
 					controladorJuego.nuevoNivel(jugarNuevo());
 				}	
 			}

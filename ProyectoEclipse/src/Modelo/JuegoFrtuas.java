@@ -8,7 +8,7 @@ public class JuegoFrtuas extends Juego {
 	private Carta frutaGanadora;
 	
 	public JuegoFrtuas(Usuario usuario) {
-		super(usuario, "Juego Colores");
+		super(usuario, "JuegoFrutas");
 		// TODO Auto-generated constructor stub
 	}
 	@Override
