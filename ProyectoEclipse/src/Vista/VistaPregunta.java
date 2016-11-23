@@ -1,4 +1,4 @@
-package JuegoDeColores;
+package Vista;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

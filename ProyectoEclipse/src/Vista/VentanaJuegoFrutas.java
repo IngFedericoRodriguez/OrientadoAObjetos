@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
-import JuegoDeColores.VistaPregunta;
-
 public class VentanaJuegoFrutas extends VentanaJuego {
 
 	

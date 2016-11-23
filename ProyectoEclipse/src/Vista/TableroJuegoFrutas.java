@@ -1,10 +1,10 @@
 package Vista;
 
-public class TableroJuegoColores extends Tablero {
+public class TableroJuegoFrutas extends Tablero {
 
 	private static final long serialVersionUID = 1L;
 
-	public TableroJuegoColores() {
+	public TableroJuegoFrutas() {
 		super();
 		usesFliplableCards = false;
 	}

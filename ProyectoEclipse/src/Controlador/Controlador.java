@@ -11,7 +11,7 @@ import Modelo.Juego;
 import Modelo.JuegoCartas;
 import Modelo.JuegoColores;
 import Modelo.Usuario;
-import Vista.TableroJuegoColores;
+import Vista.TableroJuegoFrutas;
 import Vista.VentanaJuego;
 import Vista.VentanaJuegoCartas;
 import Vista.VentanaJuegoFrutas;
@@ -101,7 +101,7 @@ public class Controlador {
 	public void jugarJuegoColores() {
 		if (usuarioLogueado) {
 			juego = new JuegoColores(usuario);
-			VentanaJuego = new VentanaJuegoFrutas(new TableroJuegoColores());
+			VentanaJuego = new VentanaJuegoFrutas(new TableroJuegoFrutas());
 			jugar();
 		}
 	}
