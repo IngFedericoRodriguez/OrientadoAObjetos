@@ -2,7 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 
-public class Usuario  {
+public class Usuario {
 
 	private String nombre;
 	private String email;
@@ -13,7 +13,7 @@ public class Usuario  {
 		this.email = email;
 		scores = new ArrayList<Score>();
 	}
-	// sobrecarga
+
 	public Usuario(String nombre, String email, ArrayList<Score> scores) {
 		this.nombre = nombre;
 		this.email = email;

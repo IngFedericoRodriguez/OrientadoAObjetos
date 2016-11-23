@@ -213,9 +213,4 @@ public class Controlador {
 		} 
 		return false;
 	}
-	
-	public static void main(String[] args) {
-		Controlador inst = new Controlador();
-		inst.crearVista();
-	}
 }
